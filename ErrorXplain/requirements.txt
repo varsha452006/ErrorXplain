@@ -1,0 +1,3 @@
+# ErrorXplain Desktop UI Dependencies
+# Desktop GUI Framework
+PyQt5>=5.15.10

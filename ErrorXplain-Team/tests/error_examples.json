@@ -1,0 +1,62 @@
+[
+  {
+    "error": "main.c:5:12: error: expected ';' before 'return'",
+    "expected_rule": "c_missing_semicolon"
+  },
+  {
+    "error": "main.c:3:10: error: use of undeclared identifier 'x'; did you mean 'y'?",
+    "expected_rule": "c_undeclared_identifier"
+  },
+  {
+    "error": "main.c:4:5: warning: implicit declaration of function 'printf' is invalid in C99 [-Wimplicit-function-declaration]",
+    "expected_rule": "c_implicit_function_declaration"
+  },
+  {
+    "error": "main.c:6:1: warning: control reaches end of non-void function [-Wreturn-type]",
+    "expected_rule": "c_missing_return_value"
+  },
+  {
+    "error": "Segmentation fault (core dumped)",
+    "expected_rule": "c_segmentation_fault"
+  },
+  {
+    "error": "main.c:7:5: error: too few arguments to function 'add'",
+    "expected_rule": "c_too_few_arguments"
+  },
+  {
+    "error": "main.c:8:3: error: too many arguments to function 'foo'",
+    "expected_rule": "c_too_many_arguments"
+  },
+  {
+    "error": "main.c:9:15: warning: passing argument 1 of 'printStr' from incompatible pointer type [-Wincompatible-pointer-types]",
+    "expected_rule": "c_incompatible_pointer_type"
+  },
+  {
+    "error": "main.c:10:14: warning: format '%d' expects argument of type 'int' but argument 2 has type 'char *' [-Wformat=]",
+    "expected_rule": "c_format_string_mismatch"
+  },
+  {
+    "error": "main.c:11:12: warning: 'count' is used uninitialized in this function [-Wuninitialized]",
+    "expected_rule": "c_uninitialized_variable"
+  },
+  {
+    "error": "main.c:12:7: error: assignment of read-only variable 'MAX'",
+    "expected_rule": "c_assignment_to_const"
+  },
+  {
+    "error": "main.c:6:5: error: break statement not within loop or switch",
+    "expected_rule": "c_break_outside_loop"
+  },
+  {
+    "error": "==123==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fff5fbff123 at pc 0x55a123",
+    "expected_rule": "c_array_out_of_bounds"
+  },
+  {
+    "error": "free(): double free detected in tcache 2",
+    "expected_rule": "c_double_free"
+  },
+  {
+    "error": "main.c:9:1: error: expected '}' at end of input",
+    "expected_rule": "c_missing_closing_brace"
+  }
+]

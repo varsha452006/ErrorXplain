@@ -1,0 +1,369 @@
+[
+  {
+    "id": "c_missing_semicolon",
+    "language": "c",
+    "patterns": [
+      "expected ';' before",
+      "expected ';' after",
+      "missing ';' before"
+    ],
+    "category": "Syntax",
+    "severity": "Medium",
+    "explanation": "You forgot a semicolon (;) at the end of a line. In C, every statement needs to end with ;.",
+    "suggestion": "Check the line before the error and add a ; at the end.",
+    "tags": ["syntax", "semicolon"]
+  },
+  {
+    "id": "c_undeclared_identifier",
+    "language": "c",
+    "patterns": [
+      "undeclared identifier",
+      "'.*' undeclared",
+      "use of undeclared identifier"
+    ],
+    "category": "Reference",
+    "severity": "High",
+    "explanation": "The computer does not know what this name means. You used a variable but you never created it with a line like 'int x;'.",
+    "suggestion": "Check spelling and make sure you write 'int x;' or 'char ch;' to create the variable before you use it.",
+    "tags": ["variable", "undeclared", "scope"]
+  },
+  {
+    "id": "c_implicit_function_declaration",
+    "language": "c",
+    "patterns": [
+      "implicit declaration of function",
+      "implicitly declaring library function"
+    ],
+    "category": "Reference",
+    "severity": "Medium",
+    "explanation": "You called a function that the computer has not seen before. This often means you forgot to include the header file (like #include <stdio.h>).",
+    "suggestion": "Add the needed #include at the top, for example #include <stdio.h> for printf or scanf.",
+    "tags": ["function", "header", "include"]
+  },
+  {
+    "id": "c_missing_return_value",
+    "language": "c",
+    "patterns": [
+      "control reaches end of non-void function",
+      "non-void function does not return a value",
+      "control may reach end of non-void function"
+    ],
+    "category": "Warning",
+    "severity": "Medium",
+    "explanation": "Your function should return a value (like int), but it ends without a 'return' line.",
+    "suggestion": "Add 'return 0;' or another return value at the end of the function.",
+    "tags": ["return", "function", "value"]
+  },
+  {
+    "id": "c_segmentation_fault",
+    "language": "c",
+    "patterns": [
+      "segmentation fault",
+      "segfault",
+      "signal sigsegv"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "Your program tried to use memory it is not allowed to touch. This crash is called a segmentation fault.",
+    "suggestion": "Check for mistakes like using a pointer before giving it a value, or going past the end of an array.",
+    "tags": ["runtime", "memory", "crash"]
+  },
+  {
+    "id": "c_undeclared_function",
+    "language": "c",
+    "patterns": [
+      "call to undeclared function",
+      "undeclared function",
+      "use of undeclared function"
+    ],
+    "category": "Reference",
+    "severity": "High",
+    "explanation": "You tried to call a function that the computer does not know. Maybe you misspelled its name or forgot to create it.",
+    "suggestion": "Check the spelling of the function name. If you made the function yourself, make sure it is written above where you call it, or add a declaration before main().",
+    "tags": ["function", "undeclared", "call"]
+  },
+  {
+    "id": "c_too_few_arguments",
+    "language": "c",
+    "patterns": [
+      "too few arguments to function",
+      "too few arguments provided",
+      "requires.*more arguments"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You called a function but gave it fewer values (arguments) than it needs.",
+    "suggestion": "Count how many inputs the function needs and give it all of them, like foo(a, b) instead of foo(a).",
+    "tags": ["function", "arguments", "call"]
+  },
+  {
+    "id": "c_too_many_arguments",
+    "language": "c",
+    "patterns": [
+      "too many arguments to function",
+      "too many arguments provided"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You called a function and gave it more values (arguments) than it expects.",
+    "suggestion": "Remove the extra value from the function call so the count matches the function's definition.",
+    "tags": ["function", "arguments", "parameters"]
+  },
+  {
+    "id": "c_incompatible_pointer_type",
+    "language": "c",
+    "patterns": [
+      "incompatible pointer type",
+      "incompatible pointer types",
+      "passing argument.*from incompatible pointer type",
+      "assignment from incompatible pointer type"
+    ],
+    "category": "Type",
+    "severity": "Medium",
+    "explanation": "You mixed up pointer types. A pointer (address) to one kind of data was used where a different kind was expected.",
+    "suggestion": "Check the type of the pointer. For example, don't pass 'int *' where 'char *' is needed. Make the types match or use the correct & and * symbols.",
+    "tags": ["pointer", "type", "mismatch"]
+  },
+  {
+    "id": "c_format_string_mismatch",
+    "language": "c",
+    "patterns": [
+      "format specifies type",
+      "format.*expects.*but argument has type",
+      "warning: format '%",
+      "conversion specifies type"
+    ],
+    "category": "Warning",
+    "severity": "Medium",
+    "explanation": "Your printf or scanf format (like %d, %s, %f) does not match the variable type you gave it.",
+    "suggestion": "Match the % code to the variable: use %d for int, %f for float/double, %s for string (char *), and %c for char.",
+    "tags": ["printf", "format", "type"]
+  },
+  {
+    "id": "c_missing_stdio_include",
+    "language": "c",
+    "patterns": [
+      "undefined reference to `printf'",
+      "undefined reference to `scanf'",
+      "was not declared.*printf",
+      "was not declared.*scanf",
+      "add #include <stdio.h>"
+    ],
+    "category": "Reference",
+    "severity": "Medium",
+    "explanation": "You used printf or scanf but the computer cannot find them. You forgot to include their helper file.",
+    "suggestion": "Add '#include <stdio.h>' at the very top of your file, before main().",
+    "tags": ["include", "stdio", "header"]
+  },
+  {
+    "id": "c_wrong_main_signature",
+    "language": "c",
+    "patterns": [
+      "return type of 'main' is not 'int'",
+      "'main' must return 'int'",
+      "first argument of 'main' should be 'int'"
+    ],
+    "category": "Syntax",
+    "severity": "Medium",
+    "explanation": "The main() function is written in a wrong way. In C, main should usually be 'int main()' or 'int main(int argc, char *argv[])'.",
+    "suggestion": "Change your main line to 'int main()' or 'int main(void)' and make sure you have 'return 0;' at the end.",
+    "tags": ["main", "signature", "syntax"]
+  },
+  {
+    "id": "c_array_out_of_bounds",
+    "language": "c",
+    "patterns": [
+      "array index out of bounds",
+      "stack-buffer-overflow",
+      "heap-buffer-overflow",
+      "index.*out of bounds"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You tried to access an array position that does not exist. For example, an array of size 5 only has spots 0 to 4.",
+    "suggestion": "Check your loop and index values. Make sure you never use arr[5] or larger when the size is 5.",
+    "tags": ["array", "bounds", "runtime"]
+  },
+  {
+    "id": "c_uninitialized_variable",
+    "language": "c",
+    "patterns": [
+      "is used uninitialized",
+      "uninitialized variable",
+      "Wuninitialized"
+    ],
+    "category": "Warning",
+    "severity": "Medium",
+    "explanation": "You used a variable before giving it a starting value. It may hold garbage (random) data.",
+    "suggestion": "Give the variable a value when you create it, like 'int x = 0;' before you use x.",
+    "tags": ["warning", "uninitialized", "variable"]
+  },
+  {
+    "id": "c_unused_variable",
+    "language": "c",
+    "patterns": [
+      "unused variable",
+      "Wunused-variable",
+      "unused-variable"
+    ],
+    "category": "Warning",
+    "severity": "Low",
+    "explanation": "You created a variable but never used it. It does not break your program, but it is extra code you don't need.",
+    "suggestion": "Remove the unused variable or use it in your code if you meant to.",
+    "tags": ["warning", "unused", "variable"]
+  },
+  {
+    "id": "c_assignment_to_const",
+    "language": "c",
+    "patterns": [
+      "assignment of read-only variable",
+      "cannot assign to variable.*const",
+      "assignment to const.*variable",
+      "read-only variable is not assignable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to change a const variable. Const means read-only (locked) and cannot be changed after creation.",
+    "suggestion": "Do not assign a new value to a const variable. Remove the 'const' word if you need to change it, or use a different variable.",
+    "tags": ["const", "readonly", "assignment"]
+  },
+  {
+    "id": "c_break_outside_loop",
+    "language": "c",
+    "patterns": [
+      "break statement not within loop or switch",
+      "continue statement not within a loop",
+      "break.*not within loop",
+      "continue.*not within loop"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "You used 'break' or 'continue' outside a loop (for, while) or switch. It only works inside them.",
+    "suggestion": "Move the break/continue inside the loop body with braces { }, or remove it if you don't need it.",
+    "tags": ["break", "continue", "loop"]
+  },
+  {
+    "id": "c_case_fallthrough",
+    "language": "c",
+    "patterns": [
+      "fallthrough",
+      "this statement may fall through",
+      "Wimplicit-fallthrough",
+      "unannotated fall-through"
+    ],
+    "category": "Warning",
+    "severity": "Low",
+    "explanation": "In a switch case, you missed a 'break;'. The program will slide (fall through) to the next case by mistake.",
+    "suggestion": "Add 'break;' at the end of each case, or add a comment '// fall through' if you meant it to continue.",
+    "tags": ["switch", "case", "fallthrough"]
+  },
+  {
+    "id": "c_stack_overflow",
+    "language": "c",
+    "patterns": [
+      "stack overflow",
+      "stack smashing",
+      "call stack overflow",
+      "maximum recursion depth",
+      "recursion.*stack"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "Your function keeps calling itself forever (never stops). This fills up memory and crashes the program.",
+    "suggestion": "Check your recursive function and make sure it has a clear stopping condition, like 'if (n == 0) return 1;'.",
+    "tags": ["recursion", "stack", "overflow"]
+  },
+  {
+    "id": "c_division_by_zero",
+    "language": "c",
+    "patterns": [
+      "division by zero",
+      "divide by zero",
+      "floating point exception",
+      "SIGFPE"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You tried to divide a number by zero. In math and in C, dividing by zero is not allowed and crashes the program.",
+    "suggestion": "Before dividing, check if the divisor is zero with 'if (y != 0)' and only divide when it is not zero.",
+    "tags": ["division", "zero", "runtime"]
+  },
+  {
+    "id": "c_null_pointer_dereference",
+    "language": "c",
+    "patterns": [
+      "null pointer dereference",
+      "dereferencing null pointer",
+      "null dereference",
+      "SEGV.*null"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You used a pointer that points to nothing (NULL). Trying to read or write through it causes a crash.",
+    "suggestion": "Check if the pointer is NULL before using it: 'if (p != NULL)' and make sure you gave it a real address with malloc or '&'.",
+    "tags": ["pointer", "null", "dereference"]
+  },
+  {
+    "id": "c_double_free",
+    "language": "c",
+    "patterns": [
+      "double free",
+      "use after free",
+      "heap-use-after-free",
+      "free(): double free detected",
+      "invalid next size.*free"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You tried to free (release) the same memory twice, or you used memory after you already freed it.",
+    "suggestion": "Only call free() once for each malloc(). After free(p), do not use p again and set it to 'p = NULL;'.",
+    "tags": ["memory", "free", "heap"]
+  },
+  {
+    "id": "c_integer_overflow",
+    "language": "c",
+    "patterns": [
+      "integer overflow",
+      "overflow in implicit constant conversion",
+      "Woverflow",
+      "warning: overflow"
+    ],
+    "category": "Warning",
+    "severity": "Medium",
+    "explanation": "Your number is too big to fit in its type (like int). It wraps around and gives a wrong value.",
+    "suggestion": "Use a bigger type like 'long long' instead of 'int', or check that the number stays within limits.",
+    "tags": ["integer", "overflow", "type"]
+  },
+  {
+    "id": "c_missing_closing_brace",
+    "language": "c",
+    "patterns": [
+      "expected '}'",
+      "missing terminating }",
+      "expected '}' at end of input",
+      "expected ']' before",
+      "expected '}' before"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "You forgot a closing brace } or bracket ]. Every opening { or [ needs a matching closing one.",
+    "suggestion": "Count your { and } braces. Add a } at the end of the block where it is missing. Your editor can help highlight matching braces.",
+    "tags": ["syntax", "brace", "bracket"]
+  },
+  {
+    "id": "c_extra_semicolon",
+    "language": "c",
+    "patterns": [
+      "extra ';'",
+      "unexpected token",
+      "empty declaration",
+      "extra semicolon",
+      "expected identifier or '(' before ';'"
+    ],
+    "category": "Syntax",
+    "severity": "Low",
+    "explanation": "You have an extra semicolon (;) or an extra symbol where it is not needed.",
+    "suggestion": "Remove the extra ;. For example, don't write 'if (x > 0);' with a ; right after the if condition.",
+    "tags": ["syntax", "semicolon", "token"]
+  }
+]

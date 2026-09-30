@@ -1,0 +1,1468 @@
+[
+  {
+    "id": "java_cannot_find_symbol_variable",
+    "language": "java",
+    "patterns": [
+      "cannot find symbol: variable",
+      "cannot find symbol\n  symbol:   variable"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "You used a variable name that Java has never seen. The variable was not declared, or the name is misspelled.",
+    "suggestion": "Declare the variable before you use it, for example: int count = 0; Check the spelling carefully.",
+    "tags": [
+      "variable",
+      "symbol",
+      "undeclared"
+    ]
+  },
+  {
+    "id": "java_cannot_find_symbol_method",
+    "language": "java",
+    "patterns": [
+      "cannot find symbol: method",
+      "cannot find symbol\n  symbol:   method"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "You called a method that Java cannot find. The name may be misspelled, or the method does not exist on that object.",
+    "suggestion": "Check the method name spelling. Make sure the object is the right type and that the method really exists for it.",
+    "tags": [
+      "method",
+      "symbol",
+      "call"
+    ]
+  },
+  {
+    "id": "java_cannot_find_symbol_class",
+    "language": "java",
+    "patterns": [
+      "cannot find symbol: class",
+      "cannot find symbol\n  symbol:   class"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "Java cannot find the class name you used. It may be misspelled or missing an import.",
+    "suggestion": "Check the class name spelling. If the class is in another package, add import package.ClassName; at the top of the file.",
+    "tags": [
+      "class",
+      "symbol",
+      "import"
+    ]
+  },
+  {
+    "id": "java_cannot_find_symbol",
+    "language": "java",
+    "patterns": [
+      "cannot find symbol"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "Java does not know the name you used (a variable, method, or class). It was never declared, is spelled wrong, or is out of reach.",
+    "suggestion": "Check the spelling. Make sure you declared the variable or method before using it. If it is a class from another package, add the correct import.",
+    "tags": [
+      "symbol",
+      "variable",
+      "method",
+      "class",
+      "undeclared"
+    ]
+  },
+  {
+    "id": "java_lossy_conversion",
+    "language": "java",
+    "patterns": [
+      "possible lossy conversion",
+      "incompatible types: possible lossy conversion"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to put a larger or more precise number into a smaller type (for example a double into an int). Some information would be lost.",
+    "suggestion": "Use a cast if you really mean to drop the extra information: int x = (int) myDouble; Or change the variable to a wider type like double.",
+    "tags": [
+      "conversion",
+      "lossy",
+      "cast",
+      "type"
+    ]
+  },
+  {
+    "id": "java_string_to_int",
+    "language": "java",
+    "patterns": [
+      "String cannot be converted to int",
+      "incompatible types: String cannot be converted to int"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to use text (a String) where a whole number (int) is required. Java will not convert text to a number automatically.",
+    "suggestion": "Convert the text with Integer.parseInt(myString). Make sure the text actually contains a number first.",
+    "tags": [
+      "String",
+      "int",
+      "convert",
+      "parseInt"
+    ]
+  },
+  {
+    "id": "java_int_to_string",
+    "language": "java",
+    "patterns": [
+      "int cannot be converted to String",
+      "incompatible types: int cannot be converted to String"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to use a whole number where text (a String) is required. Java will not convert a number to text automatically in this situation.",
+    "suggestion": "Convert the number with String.valueOf(myInt) or by writing \"\" + myInt.",
+    "tags": [
+      "int",
+      "String",
+      "convert"
+    ]
+  },
+  {
+    "id": "java_unexpected_return_value",
+    "language": "java",
+    "patterns": [
+      "unexpected return value",
+      "incompatible types: unexpected return value"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A method that should not return a value (void) tried to return something, or the returned value does not match what the method promised.",
+    "suggestion": "If the method is void, remove the return value (use return; or just end the method). Otherwise make the returned value match the method's return type.",
+    "tags": [
+      "return",
+      "void",
+      "type"
+    ]
+  },
+  {
+    "id": "java_bad_return_type",
+    "language": "java",
+    "patterns": [
+      "bad return type",
+      "incompatible types: bad return type"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "The value you returned does not match the type the method said it would return.",
+    "suggestion": "Check the method's return type (the word before the method name). Return a value of that exact type, or change the return type if it was wrong.",
+    "tags": [
+      "return",
+      "type"
+    ]
+  },
+  {
+    "id": "java_missing_return_statement",
+    "language": "java",
+    "patterns": [
+      "missing return statement",
+      "missing return value"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A method that must return a value reaches the end without a return statement on every path.",
+    "suggestion": "Add a return statement that returns the correct type. Make sure every branch (if/else) also returns a value.",
+    "tags": [
+      "return",
+      "missing"
+    ]
+  },
+  {
+    "id": "java_method_already_defined",
+    "language": "java",
+    "patterns": [
+      "method .* is already defined",
+      "is already defined in class"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "You wrote two methods with the same name and the same parameter types in the same class.",
+    "suggestion": "Rename one method, or change the parameters so the two methods are different (overloading). You cannot have two identical method signatures.",
+    "tags": [
+      "method",
+      "duplicate",
+      "defined"
+    ]
+  },
+  {
+    "id": "java_class_already_defined",
+    "language": "java",
+    "patterns": [
+      "class .* is already defined",
+      "duplicate class"
+    ],
+    "category": "Class",
+    "severity": "High",
+    "explanation": "A class with this name already exists in the same package or file.",
+    "suggestion": "Rename one of the classes, or make sure you are not compiling the same class twice.",
+    "tags": [
+      "class",
+      "duplicate"
+    ]
+  },
+  {
+    "id": "java_variable_already_defined",
+    "language": "java",
+    "patterns": [
+      "variable .* is already defined",
+      "is already defined in method"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "You declared the same name twice in the same scope. Java does not allow two variables (or methods) with the same name there.",
+    "suggestion": "Rename one of them, or remove the extra declaration. Each name can only be declared once in the same block.",
+    "tags": [
+      "defined",
+      "duplicate",
+      "variable"
+    ]
+  },
+  {
+    "id": "java_might_not_have_been_initialized",
+    "language": "java",
+    "patterns": [
+      "might not have been initialized",
+      "variable .* might not have been initialized"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "You used a local variable before giving it a value. Java requires every local variable to be set before it is read.",
+    "suggestion": "Assign a value when you declare the variable, for example: int x = 0; Or assign it in every branch before you use it.",
+    "tags": [
+      "initialized",
+      "variable",
+      "local"
+    ]
+  },
+  {
+    "id": "java_does_not_override",
+    "language": "java",
+    "patterns": [
+      "does not override or implement a method from a supertype",
+      "method does not override or implement"
+    ],
+    "category": "Type",
+    "severity": "Medium",
+    "explanation": "You used @Override, but the method does not match any method in a parent class or interface. The name or parameters may be wrong.",
+    "suggestion": "Check the method name and parameter types against the parent class. Fix the spelling or remove the @Override annotation if you did not mean to override.",
+    "tags": [
+      "override",
+      "method",
+      "supertype"
+    ]
+  },
+  {
+    "id": "java_assign_to_final",
+    "language": "java",
+    "patterns": [
+      "cannot assign a value to final variable",
+      "cannot assign a value to final"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to change a variable that was marked final. Final variables can only be set once.",
+    "suggestion": "Remove the final keyword if you need to change the value later. Or only assign to the variable once.",
+    "tags": [
+      "final",
+      "assign",
+      "variable"
+    ]
+  },
+  {
+    "id": "java_array_required",
+    "language": "java",
+    "patterns": [
+      "array required, but",
+      "array required, but .* found"
+    ],
+    "category": "Array",
+    "severity": "High",
+    "explanation": "You used square brackets [] on something that is not an array.",
+    "suggestion": "Only use [] on arrays. Check that the variable was declared as an array, for example: int[] nums = new int[5];",
+    "tags": [
+      "array",
+      "brackets",
+      "index"
+    ]
+  },
+  {
+    "id": "java_array_index_out_of_bounds",
+    "language": "java",
+    "patterns": [
+      "ArrayIndexOutOfBoundsException",
+      "array index is out of bounds",
+      "Index .* out of bounds for length"
+    ],
+    "category": "Array",
+    "severity": "High",
+    "explanation": "You used an index that is too big or too small for the array. Valid indexes go from 0 to length-1.",
+    "suggestion": "Check the array length with array.length. Only use indexes from 0 up to array.length - 1.",
+    "tags": [
+      "array",
+      "index",
+      "bounds",
+      "ArrayIndexOutOfBoundsException"
+    ]
+  },
+  {
+    "id": "java_null_pointer",
+    "language": "java",
+    "patterns": [
+      "NullPointerException",
+      "java.lang.NullPointerException"
+    ],
+    "category": "Null",
+    "severity": "High",
+    "explanation": "You tried to use something that is null (empty). Calling a method or reading a field on null causes this crash.",
+    "suggestion": "Check that the variable is not null before you use it. Example: if (obj != null) { obj.doSomething(); }",
+    "tags": [
+      "null",
+      "NullPointerException",
+      "NPE"
+    ]
+  },
+  {
+    "id": "java_string_index_out_of_bounds",
+    "language": "java",
+    "patterns": [
+      "StringIndexOutOfBoundsException",
+      "java.lang.StringIndexOutOfBoundsException"
+    ],
+    "category": "Array",
+    "severity": "High",
+    "explanation": "You used an index that is outside the length of the string. Valid indexes go from 0 to length()-1.",
+    "suggestion": "Check the string length with str.length(). Only use indexes from 0 up to str.length() - 1.",
+    "tags": [
+      "string",
+      "index",
+      "bounds",
+      "StringIndexOutOfBoundsException"
+    ]
+  },
+  {
+    "id": "java_division_by_zero",
+    "language": "java",
+    "patterns": [
+      "/ by zero",
+      "ArithmeticException: / by zero",
+      "java.lang.ArithmeticException"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You divided a number by zero. Division by zero is not allowed.",
+    "suggestion": "Check that the divisor is not zero before dividing. Example: if (b != 0) { result = a / b; }",
+    "tags": [
+      "division",
+      "zero",
+      "ArithmeticException"
+    ]
+  },
+  {
+    "id": "java_number_format",
+    "language": "java",
+    "patterns": [
+      "NumberFormatException",
+      "java.lang.NumberFormatException"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You tried to turn text into a number, but the text was not a valid number.",
+    "suggestion": "Make sure the string only contains digits (and an optional minus sign or decimal point). Check for empty strings or letters before parsing.",
+    "tags": [
+      "NumberFormatException",
+      "parse",
+      "number"
+    ]
+  },
+  {
+    "id": "java_class_cast",
+    "language": "java",
+    "patterns": [
+      "ClassCastException",
+      "java.lang.ClassCastException"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to treat an object as a different type than it really is (a bad cast).",
+    "suggestion": "Check the real type with instanceof before casting. Example: if (obj instanceof String) { String s = (String) obj; }",
+    "tags": [
+      "cast",
+      "ClassCastException",
+      "type"
+    ]
+  },
+  {
+    "id": "java_illegal_argument",
+    "language": "java",
+    "patterns": [
+      "IllegalArgumentException",
+      "java.lang.IllegalArgumentException"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "A method received an argument that it cannot accept (wrong value or wrong kind of data).",
+    "suggestion": "Read the method documentation for the allowed values. Check the arguments you are passing and fix any that are out of range or the wrong type.",
+    "tags": [
+      "argument",
+      "IllegalArgumentException"
+    ]
+  },
+  {
+    "id": "java_illegal_state",
+    "language": "java",
+    "patterns": [
+      "IllegalStateException",
+      "java.lang.IllegalStateException"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You called a method at a time when the object was not ready for that action.",
+    "suggestion": "Check the order of your method calls. Some methods can only be used after the object has been set up or opened.",
+    "tags": [
+      "state",
+      "IllegalStateException"
+    ]
+  },
+  {
+    "id": "java_index_out_of_bounds",
+    "language": "java",
+    "patterns": [
+      "IndexOutOfBoundsException",
+      "java.lang.IndexOutOfBoundsException"
+    ],
+    "category": "Array",
+    "severity": "High",
+    "explanation": "You used an index that is outside the valid range of a list or similar collection.",
+    "suggestion": "Check the size with list.size(). Valid indexes go from 0 to size() - 1.",
+    "tags": [
+      "index",
+      "bounds",
+      "IndexOutOfBoundsException",
+      "list"
+    ]
+  },
+  {
+    "id": "java_reached_end_of_file",
+    "language": "java",
+    "patterns": [
+      "reached end of file while parsing"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "Java reached the end of the file but was still expecting more code, usually a missing closing brace }.",
+    "suggestion": "Count your opening { and closing }. Add any missing } at the end of the class or method.",
+    "tags": [
+      "syntax",
+      "brace",
+      "EOF",
+      "parsing"
+    ]
+  },
+  {
+    "id": "java_class_interface_enum_expected",
+    "language": "java",
+    "patterns": [
+      "class, interface, or enum expected"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "Java expected a class, interface, or enum declaration at this point. Extra code may be outside of any class.",
+    "suggestion": "Make sure all methods and variables are inside a class. Move stray code inside the class body.",
+    "tags": [
+      "syntax",
+      "class",
+      "structure"
+    ]
+  },
+  {
+    "id": "java_semicolon_expected",
+    "language": "java",
+    "patterns": [
+      "';' expected",
+      "';' expected"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A semicolon is missing at the end of a statement.",
+    "suggestion": "Add a semicolon (;) at the end of the line shown in the error.",
+    "tags": [
+      "syntax",
+      "semicolon"
+    ]
+  },
+  {
+    "id": "java_brace_expected",
+    "language": "java",
+    "patterns": [
+      "'{' expected",
+      "'}' expected"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A curly brace { or } is missing where Java expected one.",
+    "suggestion": "Add the missing { or } so that every block is properly opened and closed.",
+    "tags": [
+      "syntax",
+      "brace"
+    ]
+  },
+  {
+    "id": "java_paren_expected",
+    "language": "java",
+    "patterns": [
+      "')' expected"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A closing parenthesis ) is missing.",
+    "suggestion": "Add the missing ) to match an opening ( on that line or the line above.",
+    "tags": [
+      "syntax",
+      "parenthesis"
+    ]
+  },
+  {
+    "id": "java_illegal_start_of_expression",
+    "language": "java",
+    "patterns": [
+      "illegal start of expression"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "Java found a symbol or keyword in a place where it does not belong inside an expression.",
+    "suggestion": "Check for extra or missing symbols, a missing semicolon on the previous line, or a keyword used in the wrong place.",
+    "tags": [
+      "syntax",
+      "expression"
+    ]
+  },
+  {
+    "id": "java_illegal_start_of_type",
+    "language": "java",
+    "patterns": [
+      "illegal start of type"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "Java found something unexpected where it expected a type name (like int or String).",
+    "suggestion": "Check the line for typos or misplaced keywords. Make sure type names are spelled correctly.",
+    "tags": [
+      "syntax",
+      "type"
+    ]
+  },
+  {
+    "id": "java_not_a_statement",
+    "language": "java",
+    "patterns": [
+      "not a statement"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "This line is not a complete statement that Java can run. It may be just a value or an incomplete expression.",
+    "suggestion": "Turn it into a full statement, for example by assigning it to a variable or calling a method. Add a semicolon if one is missing.",
+    "tags": [
+      "syntax",
+      "statement"
+    ]
+  },
+  {
+    "id": "java_void_return_value",
+    "language": "java",
+    "patterns": [
+      "cannot return a value from method whose result type is void",
+      "void methods cannot return a value"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A void method tried to return a value. Void means the method returns nothing.",
+    "suggestion": "Remove the value after return (use return; or just end the method). Or change the method's return type if it should return something.",
+    "tags": [
+      "void",
+      "return"
+    ]
+  },
+  {
+    "id": "java_non_static_from_static",
+    "language": "java",
+    "patterns": [
+      "non-static method .* cannot be referenced from a static context",
+      "non-static variable .* cannot be referenced from a static context",
+      "cannot be referenced from a static context"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to use a normal (instance) variable or method from a static method (like main). Static methods do not have an object instance.",
+    "suggestion": "Create an object first and call the method on it: MyClass obj = new MyClass(); obj.method(); Or make the variable/method static if it does not need an instance.",
+    "tags": [
+      "static",
+      "instance",
+      "main"
+    ]
+  },
+  {
+    "id": "java_method_cannot_be_applied",
+    "language": "java",
+    "patterns": [
+      "method .* in class .* cannot be applied to given types"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You called a method with the wrong number or wrong types of arguments.",
+    "suggestion": "Check the method parameters. Pass the exact types and count of values the method expects.",
+    "tags": [
+      "method",
+      "arguments",
+      "types"
+    ]
+  },
+  {
+    "id": "java_constructor_cannot_be_applied",
+    "language": "java",
+    "patterns": [
+      "constructor .* in class .* cannot be applied to given types",
+      "constructor .* cannot be applied to given types"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You called a constructor with the wrong number or wrong types of arguments.",
+    "suggestion": "Check the constructor parameters in the class. Pass the exact number and types of values it expects when you write new ClassName(...).",
+    "tags": [
+      "constructor",
+      "arguments",
+      "new"
+    ]
+  },
+  {
+    "id": "java_no_suitable_constructor",
+    "language": "java",
+    "patterns": [
+      "no suitable constructor found"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "Java could not find a constructor that matches the arguments you passed when creating an object with new.",
+    "suggestion": "Check the number and types of values you pass to new ClassName(...). Look at the class to see which constructors it actually has.",
+    "tags": [
+      "constructor",
+      "new",
+      "arguments"
+    ]
+  },
+  {
+    "id": "java_package_does_not_exist",
+    "language": "java",
+    "patterns": [
+      "package .* does not exist",
+      "package does not exist"
+    ],
+    "category": "Import",
+    "severity": "High",
+    "explanation": "Java cannot find the package you named in an import or package statement. The name may be wrong or the package is not on the classpath.",
+    "suggestion": "Check the package name spelling. Make sure the library is installed and on the classpath (or added as a dependency in your project).",
+    "tags": [
+      "package",
+      "import",
+      "classpath"
+    ]
+  },
+  {
+    "id": "java_cannot_access_class",
+    "language": "java",
+    "patterns": [
+      "cannot access class",
+      "cannot access"
+    ],
+    "category": "Class",
+    "severity": "High",
+    "explanation": "You tried to use a class that is not visible from your code (for example it is package-private and lives in another package).",
+    "suggestion": "Make the class public if it should be used from other packages, or move your code into the same package. Check that the class file is available.",
+    "tags": [
+      "access",
+      "class",
+      "visibility"
+    ]
+  },
+  {
+    "id": "java_public_class_filename",
+    "language": "java",
+    "patterns": [
+      "is public, should be declared in a file named"
+    ],
+    "category": "Class",
+    "severity": "High",
+    "explanation": "A public class must be saved in a file that has exactly the same name as the class (plus .java).",
+    "suggestion": "Rename the file to match the public class name. Example: public class Hello must live in Hello.java.",
+    "tags": [
+      "public",
+      "filename",
+      "class"
+    ]
+  },
+  {
+    "id": "java_modifier_not_allowed",
+    "language": "java",
+    "patterns": [
+      "modifier public not allowed here",
+      "modifier private not allowed here",
+      "modifier .* not allowed here"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "You used a modifier (like public or private) in a place where Java does not allow it.",
+    "suggestion": "Remove the modifier from that location. Local variables inside a method cannot be public or private.",
+    "tags": [
+      "modifier",
+      "public",
+      "private"
+    ]
+  },
+  {
+    "id": "java_unexpected_type",
+    "language": "java",
+    "patterns": [
+      "unexpected type"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "Java found a type in a place where it expected something else (for example a value instead of a type name, or the wrong kind of type).",
+    "suggestion": "Check the line carefully. You may have used a type name where a variable was needed, or the wrong type for an operator.",
+    "tags": [
+      "type",
+      "unexpected"
+    ]
+  },
+  {
+    "id": "java_integer_too_large",
+    "language": "java",
+    "patterns": [
+      "integer number too large"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "The whole number you wrote is larger than an int can hold. Plain numbers without a suffix are treated as int.",
+    "suggestion": "Add an L at the end to make it a long: 10000000000L. Or use a smaller number that fits in an int.",
+    "tags": [
+      "integer",
+      "long",
+      "overflow"
+    ]
+  },
+  {
+    "id": "java_unclosed_string",
+    "language": "java",
+    "patterns": [
+      "unclosed string literal"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A string was started with a quote but never closed on the same line.",
+    "suggestion": "Add the missing closing quote \". For text that spans several lines, use text blocks (\"\"\" ... \"\"\") in newer Java, or concatenate strings.",
+    "tags": [
+      "string",
+      "quote",
+      "literal"
+    ]
+  },
+  {
+    "id": "java_empty_character_literal",
+    "language": "java",
+    "patterns": [
+      "empty character literal"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "You wrote two single quotes with nothing between them (''). A character literal must contain exactly one character.",
+    "suggestion": "Put one character between the quotes, for example 'A'. If you want an empty string, use \"\" (double quotes) instead.",
+    "tags": [
+      "character",
+      "literal",
+      "empty"
+    ]
+  },
+  {
+    "id": "java_illegal_escape",
+    "language": "java",
+    "patterns": [
+      "illegal escape character"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "You used a backslash \\ followed by a character that is not a valid escape (like \\n or \\t).",
+    "suggestion": "Use a valid escape such as \\n (newline), \\t (tab), \\\\ (backslash), or \\\" (quote). To write a normal backslash in a path, double it: \"C:\\\\folder\".",
+    "tags": [
+      "escape",
+      "backslash",
+      "string"
+    ]
+  },
+  {
+    "id": "java_orphaned_case",
+    "language": "java",
+    "patterns": [
+      "orphaned case"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A case label appears outside of a switch statement. case can only be used inside switch.",
+    "suggestion": "Put the case inside a switch block, or remove it if it does not belong there.",
+    "tags": [
+      "case",
+      "switch"
+    ]
+  },
+  {
+    "id": "java_break_outside",
+    "language": "java",
+    "patterns": [
+      "break outside switch or loop"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "You used break outside of a switch or a loop (for, while, do). break is only allowed in those places.",
+    "suggestion": "Remove the break, or move it inside the switch or loop where you meant to exit early.",
+    "tags": [
+      "break",
+      "switch",
+      "loop"
+    ]
+  },
+  {
+    "id": "java_continue_outside",
+    "language": "java",
+    "patterns": [
+      "continue outside of loop"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "You used continue outside of a loop. continue is only allowed inside for, while, or do-while.",
+    "suggestion": "Remove the continue, or move it inside the loop where you meant to skip to the next iteration.",
+    "tags": [
+      "continue",
+      "loop"
+    ]
+  },
+  {
+    "id": "java_unreachable_statement",
+    "language": "java",
+    "patterns": [
+      "unreachable statement"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "This line of code can never run because a return, break, continue, or throw above it always leaves the block first.",
+    "suggestion": "Remove the unreachable code, or change the logic above so that this line can be reached in some cases.",
+    "tags": [
+      "unreachable",
+      "dead code"
+    ]
+  },
+  {
+    "id": "java_exception_never_thrown",
+    "language": "java",
+    "patterns": [
+      "is never thrown in body of corresponding try statement"
+    ],
+    "category": "Other",
+    "severity": "Medium",
+    "explanation": "You wrote a catch for an exception that the try block can never throw. Java does not allow catching exceptions that cannot occur there.",
+    "suggestion": "Remove that catch block, or catch a more general exception only if you really need it. Check which exceptions the code inside try actually throws.",
+    "tags": [
+      "exception",
+      "catch",
+      "try"
+    ]
+  },
+  {
+    "id": "java_unreported_exception",
+    "language": "java",
+    "patterns": [
+      "unreported exception",
+      "must be caught or declared to be thrown"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "A method calls something that can throw a checked exception, but you neither caught it nor declared it with throws.",
+    "suggestion": "Either wrap the call in try/catch, or add throws ExceptionType to the method signature. Example: public void read() throws IOException { ... }",
+    "tags": [
+      "exception",
+      "checked",
+      "throws",
+      "catch"
+    ]
+  },
+  {
+    "id": "java_exception_already_caught",
+    "language": "java",
+    "patterns": [
+      "has already been caught",
+      "is already caught by"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "You have two catch blocks for the same exception (or a parent exception was caught first, so the second catch can never run).",
+    "suggestion": "Remove the duplicate catch, or put the more specific exception catch before the more general one.",
+    "tags": [
+      "exception",
+      "catch",
+      "duplicate"
+    ]
+  },
+  {
+    "id": "java_try_without_catch",
+    "language": "java",
+    "patterns": [
+      "'try' without 'catch', 'finally' or resource declarations",
+      "try without catch"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A try block must be followed by at least one catch, a finally, or a try-with-resources declaration.",
+    "suggestion": "Add a catch (Exception e) { ... } or a finally { ... } after the try block.",
+    "tags": [
+      "try",
+      "catch",
+      "finally"
+    ]
+  },
+  {
+    "id": "java_catch_without_try",
+    "language": "java",
+    "patterns": [
+      "'catch' without 'try'",
+      "catch without try"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A catch block appears without a matching try above it.",
+    "suggestion": "Put a try { ... } block before the catch, or remove the catch if it is not needed.",
+    "tags": [
+      "catch",
+      "try"
+    ]
+  },
+  {
+    "id": "java_finally_without_try",
+    "language": "java",
+    "patterns": [
+      "'finally' without 'try'",
+      "finally without try"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A finally block appears without a matching try above it.",
+    "suggestion": "Put a try { ... } block before the finally, or remove the finally if it is not needed.",
+    "tags": [
+      "finally",
+      "try"
+    ]
+  },
+  {
+    "id": "java_negative_array_size",
+    "language": "java",
+    "patterns": [
+      "NegativeArraySizeException",
+      "java.lang.NegativeArraySizeException"
+    ],
+    "category": "Array",
+    "severity": "High",
+    "explanation": "You tried to create an array with a negative size. Array length must be zero or a positive number.",
+    "suggestion": "Check the number you pass to new Type[size]. Make sure it is not negative. Example: new int[10] is OK; new int[-1] is not.",
+    "tags": [
+      "array",
+      "size",
+      "negative",
+      "NegativeArraySizeException"
+    ]
+  },
+  {
+    "id": "java_stack_overflow",
+    "language": "java",
+    "patterns": [
+      "StackOverflowError",
+      "java.lang.StackOverflowError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "A method kept calling itself (or a chain of methods kept calling each other) so many times that the call stack ran out of space.",
+    "suggestion": "Check for infinite recursion. Make sure every recursive method has a clear stopping condition that is eventually reached.",
+    "tags": [
+      "stack",
+      "recursion",
+      "StackOverflowError"
+    ]
+  },
+  {
+    "id": "java_out_of_memory",
+    "language": "java",
+    "patterns": [
+      "OutOfMemoryError",
+      "java.lang.OutOfMemoryError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "The program tried to use more memory than the Java virtual machine can give.",
+    "suggestion": "Process data in smaller pieces instead of loading everything at once. Look for large arrays or collections that grow without limit.",
+    "tags": [
+      "memory",
+      "OutOfMemoryError"
+    ]
+  },
+  {
+    "id": "java_no_class_def_found",
+    "language": "java",
+    "patterns": [
+      "NoClassDefFoundError",
+      "java.lang.NoClassDefFoundError"
+    ],
+    "category": "Class",
+    "severity": "High",
+    "explanation": "Java found the class at compile time but cannot find it at runtime. The class file may be missing from the classpath.",
+    "suggestion": "Make sure the class file or JAR is on the classpath when you run the program. Rebuild the project and check that no class files were deleted.",
+    "tags": [
+      "class",
+      "classpath",
+      "NoClassDefFoundError"
+    ]
+  },
+  {
+    "id": "java_class_not_found",
+    "language": "java",
+    "patterns": [
+      "ClassNotFoundException",
+      "java.lang.ClassNotFoundException"
+    ],
+    "category": "Class",
+    "severity": "High",
+    "explanation": "Java tried to load a class by name and could not find it on the classpath.",
+    "suggestion": "Check the class name spelling. Make sure the JAR or class folder is on the classpath. For drivers (like JDBC), ensure the driver JAR is included.",
+    "tags": [
+      "class",
+      "classpath",
+      "ClassNotFoundException"
+    ]
+  },
+  {
+    "id": "java_no_such_method_error",
+    "language": "java",
+    "patterns": [
+      "NoSuchMethodError",
+      "java.lang.NoSuchMethodError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "At runtime Java looked for a method that does not exist in the class that was actually loaded. This often means mixed versions of a library.",
+    "suggestion": "Make sure all JARs are the same version you compiled against. Clean and rebuild the project so old class files are not mixed with new ones.",
+    "tags": [
+      "method",
+      "version",
+      "NoSuchMethodError"
+    ]
+  },
+  {
+    "id": "java_abstract_method_error",
+    "language": "java",
+    "patterns": [
+      "AbstractMethodError",
+      "java.lang.AbstractMethodError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "A class was expected to implement an abstract method, but the method is missing at runtime. This usually means incompatible library versions.",
+    "suggestion": "Update or align the versions of your libraries so that implementations match the interfaces they claim to support. Clean and rebuild.",
+    "tags": [
+      "abstract",
+      "method",
+      "AbstractMethodError"
+    ]
+  },
+  {
+    "id": "java_unsupported_operation",
+    "language": "java",
+    "patterns": [
+      "UnsupportedOperationException",
+      "java.lang.UnsupportedOperationException"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You called a method that this object does not support. Some collections (like those from Arrays.asList) do not allow add or remove.",
+    "suggestion": "Use a different collection type that supports the operation, for example new ArrayList<>(Arrays.asList(...)) if you need to add or remove items.",
+    "tags": [
+      "unsupported",
+      "operation",
+      "collection"
+    ]
+  },
+  {
+    "id": "java_concurrent_modification",
+    "language": "java",
+    "patterns": [
+      "ConcurrentModificationException",
+      "java.lang.ConcurrentModificationException"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You changed a collection while looping over it (for example removing an item inside a for-each loop). That is not allowed.",
+    "suggestion": "Use an Iterator and call iterator.remove(), or collect the items to remove in a separate list and remove them after the loop.",
+    "tags": [
+      "concurrent",
+      "modification",
+      "collection",
+      "iterator"
+    ]
+  },
+  {
+    "id": "java_interrupted_exception",
+    "language": "java",
+    "patterns": [
+      "InterruptedException",
+      "java.lang.InterruptedException"
+    ],
+    "category": "Runtime",
+    "severity": "Medium",
+    "explanation": "A thread was interrupted while it was waiting or sleeping. This is often used to signal that the thread should stop.",
+    "suggestion": "Handle InterruptedException in a catch block. Restore the interrupt flag with Thread.currentThread().interrupt() if you cannot stop yet.",
+    "tags": [
+      "interrupted",
+      "thread",
+      "InterruptedException"
+    ]
+  },
+  {
+    "id": "java_file_not_found",
+    "language": "java",
+    "patterns": [
+      "FileNotFoundException",
+      "java.io.FileNotFoundException"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "Java could not find the file at the path you gave, or could not open it for the mode you requested.",
+    "suggestion": "Check the file path spelling and that the file really exists. Use an absolute path if a relative path is unclear. Make sure you have permission to read or write it.",
+    "tags": [
+      "file",
+      "FileNotFoundException",
+      "path"
+    ]
+  },
+  {
+    "id": "java_eof_exception",
+    "language": "java",
+    "patterns": [
+      "EOFException",
+      "java.io.EOFException"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "The program tried to read more data from a stream, but the end of the file or stream was already reached.",
+    "suggestion": "Check for end of stream before reading more (for example with read() returning -1). Do not assume there is always more data.",
+    "tags": [
+      "EOF",
+      "stream",
+      "read"
+    ]
+  },
+  {
+    "id": "java_io_exception",
+    "language": "java",
+    "patterns": [
+      "java.io.IOException",
+      "IOException"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "An input or output operation failed (reading, writing, or connecting to a stream).",
+    "suggestion": "Check that the file or stream is open and available. Handle the exception with try/catch and print or log the detailed message for more clues.",
+    "tags": [
+      "io",
+      "IOException",
+      "file",
+      "stream"
+    ]
+  },
+  {
+    "id": "java_connect_exception",
+    "language": "java",
+    "patterns": [
+      "ConnectException",
+      "java.net.ConnectException"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "Java could not connect to the remote server. The server may be down, the address wrong, or a firewall may be blocking the connection.",
+    "suggestion": "Check the host name and port. Make sure the server is running and reachable (try it in a browser or with ping). Check firewall settings.",
+    "tags": [
+      "network",
+      "connect",
+      "ConnectException"
+    ]
+  },
+  {
+    "id": "java_socket_timeout",
+    "language": "java",
+    "patterns": [
+      "SocketTimeoutException",
+      "java.net.SocketTimeoutException"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "A network read or connection took too long and timed out.",
+    "suggestion": "Increase the timeout if the server is slow, or check that the server is responding. Handle the timeout so your program can retry or show a clear message.",
+    "tags": [
+      "network",
+      "timeout",
+      "socket"
+    ]
+  },
+  {
+    "id": "java_unknown_host",
+    "language": "java",
+    "patterns": [
+      "UnknownHostException",
+      "java.net.UnknownHostException"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "Java could not resolve the host name to an IP address. The name may be misspelled or there may be no network/DNS.",
+    "suggestion": "Check the host name spelling. Make sure you have internet access and that DNS is working. Try the address in a browser.",
+    "tags": [
+      "network",
+      "host",
+      "DNS",
+      "UnknownHostException"
+    ]
+  },
+  {
+    "id": "java_sql_exception",
+    "language": "java",
+    "patterns": [
+      "SQLException",
+      "java.sql.SQLException"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "A database operation failed. The SQL may be wrong, the connection may be closed, or the database may have rejected the command.",
+    "suggestion": "Read the detailed message from the exception. Check your SQL syntax, table and column names, and that the connection is open. Log e.getMessage() for more detail.",
+    "tags": [
+      "sql",
+      "database",
+      "SQLException"
+    ]
+  },
+  {
+    "id": "java_no_suitable_method",
+    "language": "java",
+    "patterns": [
+      "no suitable method found for"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "Java could not find a method that matches the name and argument types you used in the call.",
+    "suggestion": "Check the method name spelling and the number and types of arguments. Look at the class to see which methods are available.",
+    "tags": [
+      "method",
+      "arguments",
+      "call"
+    ]
+  },
+  {
+    "id": "java_reference_ambiguous",
+    "language": "java",
+    "patterns": [
+      "reference to .* is ambiguous",
+      "is ambiguous"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "Java found more than one method or variable with that name and cannot decide which one you mean.",
+    "suggestion": "Use a more specific name, cast the argument to the exact type you want, or call the method on a clearly typed variable.",
+    "tags": [
+      "ambiguous",
+      "reference",
+      "overload"
+    ]
+  },
+  {
+    "id": "java_static_from_non_static",
+    "language": "java",
+    "patterns": [
+      "static method .* cannot be referenced from a non-static context",
+      "cannot be referenced from a non-static context"
+    ],
+    "category": "Type",
+    "severity": "Medium",
+    "explanation": "You tried to use a static method in a way that Java does not allow in this context (rare wording).",
+    "suggestion": "Call static methods with the class name: ClassName.method(). Make sure you are not mixing static and instance usage incorrectly.",
+    "tags": [
+      "static",
+      "method"
+    ]
+  },
+  {
+    "id": "java_void_cannot_convert",
+    "language": "java",
+    "patterns": [
+      "void cannot be converted to"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to use the result of a void method as a value. Void methods return nothing.",
+    "suggestion": "Do not assign a void method call to a variable. Call it as a statement on its own line: myMethod();",
+    "tags": [
+      "void",
+      "return",
+      "convert"
+    ]
+  },
+  {
+    "id": "java_paren_open_expected",
+    "language": "java",
+    "patterns": [
+      "'(' expected"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "An opening parenthesis ( is missing where Java expected one.",
+    "suggestion": "Add the missing ( in the method call or expression on that line.",
+    "tags": [
+      "syntax",
+      "parenthesis"
+    ]
+  },
+  {
+    "id": "java_bracket_expected",
+    "language": "java",
+    "patterns": [
+      "']' expected"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "A closing square bracket ] is missing.",
+    "suggestion": "Add the missing ] to close an array index or array declaration.",
+    "tags": [
+      "syntax",
+      "bracket",
+      "array"
+    ]
+  },
+  {
+    "id": "java_illegal_character",
+    "language": "java",
+    "patterns": [
+      "illegal character:"
+    ],
+    "category": "Syntax",
+    "severity": "High",
+    "explanation": "The source file contains a character that is not allowed in Java code (sometimes copied from a website or another language).",
+    "suggestion": "Delete the bad character and type it again. Watch for fancy quotes, special symbols, or hidden characters.",
+    "tags": [
+      "syntax",
+      "character",
+      "illegal"
+    ]
+  },
+  {
+    "id": "java_float_too_large",
+    "language": "java",
+    "patterns": [
+      "floating point number too large"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "The decimal number you wrote is larger than the float or double type can hold.",
+    "suggestion": "Use a smaller number, or check that you did not add too many digits. For very large values consider BigDecimal.",
+    "tags": [
+      "float",
+      "double",
+      "overflow"
+    ]
+  },
+  {
+    "id": "java_array_dimension_missing",
+    "language": "java",
+    "patterns": [
+      "array dimension missing"
+    ],
+    "category": "Array",
+    "severity": "High",
+    "explanation": "You declared or created an array but left out the size in the brackets.",
+    "suggestion": "Provide the size: new int[10]. Or when declaring with values: int[] a = {1, 2, 3};",
+    "tags": [
+      "array",
+      "dimension",
+      "size"
+    ]
+  },
+  {
+    "id": "java_final_parameter_assign",
+    "language": "java",
+    "patterns": [
+      "final parameter .* may not be assigned",
+      "final parameter"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to change a method parameter that was marked final. Final parameters cannot be reassigned.",
+    "suggestion": "Remove the final keyword from the parameter if you need to change it, or use a new local variable instead.",
+    "tags": [
+      "final",
+      "parameter",
+      "assign"
+    ]
+  },
+  {
+    "id": "java_name_clash_erasure",
+    "language": "java",
+    "patterns": [
+      "have the same erasure",
+      "name clash:"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "Two methods have the same name and, after generics are removed, the same parameter types. Java cannot tell them apart at runtime.",
+    "suggestion": "Rename one of the methods, or change the parameters so they are different even without generics (for example use different raw types).",
+    "tags": [
+      "generics",
+      "erasure",
+      "name clash",
+      "overload"
+    ]
+  },
+  {
+    "id": "java_type_parameter_bound",
+    "language": "java",
+    "patterns": [
+      "type parameter .* is not within its bound",
+      "is not within its bound"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used a type argument that does not satisfy the bounds declared for that type parameter (for example T extends Number but you passed String).",
+    "suggestion": "Pass a type that matches the bound. Check the class or method declaration for extends or super constraints.",
+    "tags": [
+      "generics",
+      "bound",
+      "type parameter"
+    ]
+  },
+  {
+    "id": "java_inference_incompatible_bounds",
+    "language": "java",
+    "patterns": [
+      "inference variable .* has incompatible bounds",
+      "has incompatible bounds"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "Java tried to guess a generic type but the constraints conflict (the type would need to be two incompatible things at once).",
+    "suggestion": "Add an explicit type argument, for example Collections.<String>emptyList(), or adjust the variables so the types agree.",
+    "tags": [
+      "generics",
+      "inference",
+      "bounds"
+    ]
+  }
+]

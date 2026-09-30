@@ -1,0 +1,1911 @@
+[
+  {
+    "id": "py_str_concat_int",
+    "language": "python",
+    "patterns": [
+      "can only concatenate str (not \"int\") to str"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to join a string (text) with a whole number using +. Python cannot mix text and numbers this way.",
+    "suggestion": "Convert the number to text with str(), for example: \"hello\" + str(5). Or use an f-string: f\"hello {5}\".",
+    "tags": [
+      "concatenate",
+      "str",
+      "int",
+      "plus"
+    ]
+  },
+  {
+    "id": "py_str_concat_float",
+    "language": "python",
+    "patterns": [
+      "can only concatenate str (not \"float\") to str"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to join a string (text) with a decimal number using +. Python cannot mix text and numbers this way.",
+    "suggestion": "Convert the number to text with str(), for example: \"price: \" + str(9.99). Or use an f-string: f\"price: {9.99}\".",
+    "tags": [
+      "concatenate",
+      "str",
+      "float",
+      "plus"
+    ]
+  },
+  {
+    "id": "py_list_concat_tuple",
+    "language": "python",
+    "patterns": [
+      "can only concatenate list (not \"tuple\") to list"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to join a list with a tuple using +. These are two different kinds of collections and cannot be added directly.",
+    "suggestion": "Convert the tuple to a list first with list(my_tuple), then add them: my_list + list(my_tuple). Or use extend() if you want to change the original list.",
+    "tags": [
+      "concatenate",
+      "list",
+      "tuple",
+      "plus"
+    ]
+  },
+  {
+    "id": "py_add_int_str",
+    "language": "python",
+    "patterns": [
+      "unsupported operand type(s) for +: 'int' and 'str'"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to add a number and a string with +. Python does not know how to add a number and text together.",
+    "suggestion": "If you want to join them as text, convert the number: str(5) + \" apples\". If you want to do math, make sure both sides are numbers.",
+    "tags": [
+      "add",
+      "int",
+      "str",
+      "plus",
+      "operand"
+    ]
+  },
+  {
+    "id": "py_subtract_str_str",
+    "language": "python",
+    "patterns": [
+      "unsupported operand type(s) for -: 'str' and 'str'"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to subtract one string from another with -. You can only subtract numbers, not text.",
+    "suggestion": "Check that both sides of the - are numbers. If you meant to remove part of a string, use methods like replace() or slicing instead.",
+    "tags": [
+      "subtract",
+      "str",
+      "minus",
+      "operand"
+    ]
+  },
+  {
+    "id": "py_int_not_iterable",
+    "language": "python",
+    "patterns": [
+      "'int' object is not iterable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to loop over a whole number. A single number has no items to step through.",
+    "suggestion": "Loop over a list, a string, or a range instead. Example: for i in range(5): not for i in 5:.",
+    "tags": [
+      "iterable",
+      "int",
+      "loop",
+      "for"
+    ]
+  },
+  {
+    "id": "py_nonetype_not_iterable",
+    "language": "python",
+    "patterns": [
+      "'NoneType' object is not iterable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to loop over None. None is empty and has nothing to loop over.",
+    "suggestion": "Make sure the variable holds a list or string before the loop. A function may have returned None by accident.",
+    "tags": [
+      "iterable",
+      "None",
+      "NoneType",
+      "loop"
+    ]
+  },
+  {
+    "id": "py_float_not_iterable",
+    "language": "python",
+    "patterns": [
+      "'float' object is not iterable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to loop over a decimal number. A single number cannot be stepped through item by item.",
+    "suggestion": "Make sure you are looping over a list, string, or range, not a float value.",
+    "tags": [
+      "iterable",
+      "float",
+      "loop",
+      "for"
+    ]
+  },
+  {
+    "id": "py_bool_not_iterable",
+    "language": "python",
+    "patterns": [
+      "'bool' object is not iterable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to loop over a True/False value. A boolean has only one value and cannot be stepped through.",
+    "suggestion": "Check the variable you are looping over. It should be a list, string, or other collection, not True or False.",
+    "tags": [
+      "iterable",
+      "bool",
+      "boolean",
+      "loop"
+    ]
+  },
+  {
+    "id": "py_list_not_callable",
+    "language": "python",
+    "patterns": [
+      "'list' object is not callable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You put () after a list name, as if the list were a function. Lists cannot be called.",
+    "suggestion": "Remove the (). If you want an item from the list, use square brackets: my_list[0].",
+    "tags": [
+      "callable",
+      "list",
+      "parentheses",
+      "call"
+    ]
+  },
+  {
+    "id": "py_str_not_callable",
+    "language": "python",
+    "patterns": [
+      "'str' object is not callable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You put () after a string name, as if the string were a function. Strings cannot be called.",
+    "suggestion": "Remove the (). Check that you did not overwrite a function name with a string by accident.",
+    "tags": [
+      "callable",
+      "str",
+      "string",
+      "parentheses"
+    ]
+  },
+  {
+    "id": "py_dict_not_callable",
+    "language": "python",
+    "patterns": [
+      "'dict' object is not callable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You put parentheses () after a dictionary name, as if it were a function. Dictionaries are not functions.",
+    "suggestion": "Remove the (). To get a value from a dictionary use square brackets: my_dict[\"key\"].",
+    "tags": [
+      "callable",
+      "dict",
+      "dictionary",
+      "parentheses"
+    ]
+  },
+  {
+    "id": "py_nonetype_not_callable",
+    "language": "python",
+    "patterns": [
+      "'NoneType' object is not callable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to call something that is None (as if it were a function). None cannot be called with ().",
+    "suggestion": "Check that the variable holds a real function before you call it. A previous assignment or function may have set it to None.",
+    "tags": [
+      "callable",
+      "None",
+      "NoneType",
+      "call"
+    ]
+  },
+  {
+    "id": "py_int_not_subscriptable",
+    "language": "python",
+    "patterns": [
+      "'int' object is not subscriptable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used square brackets [] on a whole number. Numbers do not contain items you can pick by position.",
+    "suggestion": "Only use [] on lists, strings, or dictionaries. You may have replaced a list with a number earlier in the code.",
+    "tags": [
+      "subscriptable",
+      "int",
+      "index",
+      "brackets"
+    ]
+  },
+  {
+    "id": "py_nonetype_not_subscriptable",
+    "language": "python",
+    "patterns": [
+      "'NoneType' object is not subscriptable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used square brackets [] on None. None has no items to look up.",
+    "suggestion": "Check that the variable is not None before using []. A function may have returned None.",
+    "tags": [
+      "subscriptable",
+      "None",
+      "NoneType",
+      "index"
+    ]
+  },
+  {
+    "id": "py_set_not_subscriptable",
+    "language": "python",
+    "patterns": [
+      "'set' object is not subscriptable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used square brackets [] on a set. Sets do not keep order and do not support looking up items by index.",
+    "suggestion": "Convert the set to a list first if you need indexing: list(my_set)[0]. Or loop over the set instead of using an index.",
+    "tags": [
+      "subscriptable",
+      "set",
+      "index",
+      "brackets"
+    ]
+  },
+  {
+    "id": "py_int_no_len",
+    "language": "python",
+    "patterns": [
+      "object of type 'int' has no len()"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You asked for the length of a whole number with len(). Only things that contain items (lists, strings, etc.) have a length.",
+    "suggestion": "Make sure you call len() on a list, string, or dictionary, not on a number.",
+    "tags": [
+      "len",
+      "int",
+      "length"
+    ]
+  },
+  {
+    "id": "py_float_no_len",
+    "language": "python",
+    "patterns": [
+      "object of type 'float' has no len()"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You asked for the length of a decimal number with len(). Only things that contain items (lists, strings, etc.) have a length.",
+    "suggestion": "Make sure you call len() on a list, string, or dictionary, not on a float.",
+    "tags": [
+      "len",
+      "float",
+      "length"
+    ]
+  },
+  {
+    "id": "py_missing_required_args",
+    "language": "python",
+    "patterns": [
+      "missing .* required positional argument"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You called a function but left out one or more required inputs.",
+    "suggestion": "Look at the function definition (the def line). Count the required names inside the parentheses and pass that many values when you call it. Example: if def greet(name): then call greet(\"Ada\").",
+    "tags": [
+      "arguments",
+      "missing",
+      "function",
+      "call"
+    ]
+  },
+  {
+    "id": "py_too_many_positional_args",
+    "language": "python",
+    "patterns": [
+      "takes .* positional arguments? but .* (was|were) given"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You gave a function more inputs than it is allowed to take.",
+    "suggestion": "Look at the function definition and pass only the number of values it expects. Remove any extra values from the call.",
+    "tags": [
+      "arguments",
+      "too many",
+      "function",
+      "call"
+    ]
+  },
+  {
+    "id": "py_tuple_no_item_assignment",
+    "language": "python",
+    "patterns": [
+      "'tuple' object does not support item assignment"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to change an item inside a tuple. Tuples cannot be changed after they are created (they are immutable).",
+    "suggestion": "If you need to change items, use a list instead of a tuple. Convert with list(my_tuple), make the change, then convert back if needed.",
+    "tags": [
+      "tuple",
+      "assignment",
+      "immutable",
+      "item"
+    ]
+  },
+  {
+    "id": "py_str_no_item_assignment",
+    "language": "python",
+    "patterns": [
+      "'str' object does not support item assignment"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to change a character inside a string. Strings cannot be changed after they are created.",
+    "suggestion": "Build a new string instead. For example use replace() or slicing: new_str = old_str[:2] + \"X\" + old_str[3:].",
+    "tags": [
+      "str",
+      "string",
+      "assignment",
+      "immutable"
+    ]
+  },
+  {
+    "id": "py_bytes_no_item_assignment",
+    "language": "python",
+    "patterns": [
+      "'bytes' object does not support item assignment"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to change a byte inside a bytes object. Bytes objects cannot be changed after they are created.",
+    "suggestion": "Convert to a bytearray if you need to modify it: ba = bytearray(my_bytes), then change items, then convert back with bytes(ba).",
+    "tags": [
+      "bytes",
+      "assignment",
+      "immutable",
+      "item"
+    ]
+  },
+  {
+    "id": "py_strip_no_arguments",
+    "language": "python",
+    "patterns": [
+      "strip() takes no arguments (1 given)"
+    ],
+    "category": "Type",
+    "severity": "Medium",
+    "explanation": "You called strip() with an argument, but the version of strip you used does not accept any.",
+    "suggestion": "Call strip() with empty parentheses: my_string.strip(). If you want to remove specific characters, check the documentation for the correct way on your Python version.",
+    "tags": [
+      "strip",
+      "arguments",
+      "method",
+      "string"
+    ]
+  },
+  {
+    "id": "py_append_too_many_args",
+    "language": "python",
+    "patterns": [
+      "append() takes exactly one argument (2 given)"
+    ],
+    "category": "Type",
+    "severity": "Medium",
+    "explanation": "You called list.append() with more than one value. append() only accepts a single item.",
+    "suggestion": "Pass only one item: my_list.append(value). To add several items at once use extend([a, b, c]) or += [a, b, c].",
+    "tags": [
+      "append",
+      "list",
+      "arguments",
+      "method"
+    ]
+  },
+  {
+    "id": "py_path_expected_str_not_int",
+    "language": "python",
+    "patterns": [
+      "expected str, bytes or os.PathLike object, not int"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A function that needs a file path received a number instead. File paths must be text (strings).",
+    "suggestion": "Pass the path as a string, for example open(\"data.txt\") or open(str(my_number)) if you really need to turn a number into a path name.",
+    "tags": [
+      "path",
+      "str",
+      "int",
+      "file",
+      "open"
+    ]
+  },
+  {
+    "id": "py_path_expected_str_not_none",
+    "language": "python",
+    "patterns": [
+      "expected str, bytes or os.PathLike object, not NoneType"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A function that needs a file path received None instead. File paths must be text (strings), not empty.",
+    "suggestion": "Make sure the path variable is set to a real string before you use it. Check that no earlier code set it to None.",
+    "tags": [
+      "path",
+      "None",
+      "NoneType",
+      "file",
+      "open"
+    ]
+  },
+  {
+    "id": "py_isinstance_arg2_not_type",
+    "language": "python",
+    "patterns": [
+      "isinstance() arg 2 must be a type, a tuple of types, or a union"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "The second argument to isinstance() must be a type (like int or str) or a tuple of types. You gave it something else.",
+    "suggestion": "Write isinstance(value, int) or isinstance(value, (int, float)). Do not put a string or an instance there.",
+    "tags": [
+      "isinstance",
+      "type",
+      "check",
+      "argument"
+    ]
+  },
+  {
+    "id": "py_name_not_defined",
+    "language": "python",
+    "patterns": [
+      "NameError: name '",
+      "name '.*' is not defined"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "You used a name (variable or function) that Python does not know. It was never created, is spelled wrong, or is used too early.",
+    "suggestion": "1) Check the spelling. 2) Make sure you give the name a value before you use it (example: user_id = 42). 3) If it comes from another file, add the correct import line.",
+    "tags": [
+      "name",
+      "undefined",
+      "variable",
+      "NameError"
+    ]
+  },
+  {
+    "id": "py_index_out_of_range",
+    "language": "python",
+    "patterns": [
+      "list index out of range",
+      "tuple index out of range",
+      "string index out of range",
+      "list assignment index out of range",
+      "replace index out of range",
+      "bytearray index out of range"
+    ],
+    "category": "Index",
+    "severity": "High",
+    "explanation": "You used a position number that does not exist. Positions start at 0. If a list has 3 items, the last valid position is 2.",
+    "suggestion": "Check the length with len(my_list). Only use numbers from 0 to len(my_list)-1. Example: my_list[0] is the first item.",
+    "tags": [
+      "index",
+      "out of range",
+      "list",
+      "tuple",
+      "string"
+    ]
+  },
+  {
+    "id": "py_pop_empty_list",
+    "language": "python",
+    "patterns": [
+      "pop from empty list"
+    ],
+    "category": "Index",
+    "severity": "High",
+    "explanation": "You called .pop() on a list that has zero items. There is nothing to take out.",
+    "suggestion": "Only call pop() when the list has items. Safe way: if my_list: item = my_list.pop()",
+    "tags": [
+      "pop",
+      "empty",
+      "list"
+    ]
+  },
+  {
+    "id": "py_key_error",
+    "language": "python",
+    "patterns": [
+      "KeyError: '",
+      "KeyError: \""
+    ],
+    "category": "Key",
+    "severity": "High",
+    "explanation": "You asked a dictionary for a key that is not inside it.",
+    "suggestion": "Check the spelling and capital letters of the key. Safer options: use my_dict.get('key') (returns None if missing) or write if 'key' in my_dict: before accessing it.",
+    "tags": [
+      "key",
+      "dictionary",
+      "KeyError",
+      "missing"
+    ]
+  },
+  {
+    "id": "py_int_invalid_literal",
+    "language": "python",
+    "patterns": [
+      "invalid literal for int() with base 10"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You tried to turn some text into a whole number with int(), but the text is not a valid whole number (it may contain letters, a decimal point, or be empty).",
+    "suggestion": "Make sure the text only contains digits (0-9) and an optional minus sign. If it may have a decimal, use float() first or clean the text before converting.",
+    "tags": [
+      "int",
+      "convert",
+      "literal",
+      "ValueError"
+    ]
+  },
+  {
+    "id": "py_float_conversion_failed",
+    "language": "python",
+    "patterns": [
+      "could not convert string to float"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You tried to turn some text into a decimal number with float(), but the text is not a valid number.",
+    "suggestion": "Check that the text looks like a number (for example '3.14' or '42'). Remove any letters, spaces, or special words like 'N/A' before converting.",
+    "tags": [
+      "float",
+      "convert",
+      "string",
+      "ValueError"
+    ]
+  },
+  {
+    "id": "py_math_domain_error",
+    "language": "python",
+    "patterns": [
+      "math domain error"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You asked a math function (like sqrt or log) to do something that is not allowed with the number you gave (for example square root of a negative number).",
+    "suggestion": "Check the input value. Many math functions only work with positive numbers or numbers in a certain range. Add a check before calling the function.",
+    "tags": [
+      "math",
+      "domain",
+      "sqrt",
+      "log"
+    ]
+  },
+  {
+    "id": "py_substring_not_found",
+    "language": "python",
+    "patterns": [
+      "substring not found"
+    ],
+    "category": "Value",
+    "severity": "Medium",
+    "explanation": "You tried to find or remove a piece of text that does not exist inside the string.",
+    "suggestion": "Check the exact spelling and case of the substring. Use 'in' to test first: if 'abc' in my_string: before calling find or index methods that raise errors.",
+    "tags": [
+      "substring",
+      "string",
+      "find",
+      "index"
+    ]
+  },
+  {
+    "id": "py_list_remove_missing",
+    "language": "python",
+    "patterns": [
+      "list.remove(x): x not in list"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You tried to remove a value from a list, but that value is not in the list.",
+    "suggestion": "Check that the item really exists before removing it: if x in my_list: my_list.remove(x). Or use a try/except if you expect it might be missing.",
+    "tags": [
+      "remove",
+      "list",
+      "missing"
+    ]
+  },
+  {
+    "id": "py_unpack_too_many",
+    "language": "python",
+    "patterns": [
+      "too many values to unpack"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You tried to unpack a sequence into fewer variables than the number of items it contains (for example a, b = [1, 2, 3]).",
+    "suggestion": "Make the number of variables match the number of items, or use * to collect extras: a, b, *rest = my_list.",
+    "tags": [
+      "unpack",
+      "too many",
+      "tuple",
+      "list"
+    ]
+  },
+  {
+    "id": "py_unpack_not_enough",
+    "language": "python",
+    "patterns": [
+      "not enough values to unpack"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You tried to unpack a sequence into more variables than the number of items it contains (for example a, b = [1]).",
+    "suggestion": "Make the number of variables match the number of items, or give a default for missing ones. Check the length of the sequence first.",
+    "tags": [
+      "unpack",
+      "not enough",
+      "tuple",
+      "list"
+    ]
+  },
+  {
+    "id": "py_nonetype_attribute",
+    "language": "python",
+    "patterns": [
+      "'NoneType' object has no attribute"
+    ],
+    "category": "Attribute",
+    "severity": "High",
+    "explanation": "You tried to call a method on something that is None (empty). None has no methods or properties.",
+    "suggestion": "Before using the variable, check that it is not None. Example: if result is not None: result.get('key'). A function may have returned None by mistake.",
+    "tags": [
+      "None",
+      "NoneType",
+      "attribute",
+      "method"
+    ]
+  },
+  {
+    "id": "py_attribute_error",
+    "language": "python",
+    "patterns": [
+      "type object '.*' has no attribute",
+      "AttributeError: '.*' object has no attribute",
+      "module '.*' has no attribute",
+      "'list' object has no attribute",
+      "'str' object has no attribute",
+      "'dict' object has no attribute",
+      "'tuple' object has no attribute",
+      "'int' object has no attribute",
+      "'module' object has no attribute"
+    ],
+    "category": "Attribute",
+    "severity": "High",
+    "explanation": "You tried to use a method or property that this kind of object does not have. For example, calling .lower() on a list or .append() on a string.",
+    "suggestion": "Print the variable and check its type with type(my_var). Then only use methods that belong to that type. Also double-check the method name for typos.",
+    "tags": [
+      "attribute",
+      "method",
+      "AttributeError"
+    ]
+  },
+  {
+    "id": "py_division_by_zero",
+    "language": "python",
+    "patterns": [
+      "division by zero",
+      "float division by zero",
+      "modulo by zero"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You tried to divide a number by zero (or take the remainder with % zero). Division by zero is not allowed.",
+    "suggestion": "Check that the number you are dividing by is not zero before doing the division. Add a simple if denominator != 0: guard.",
+    "tags": [
+      "division",
+      "zero",
+      "ZeroDivisionError",
+      "modulo"
+    ]
+  },
+  {
+    "id": "py_file_not_found",
+    "language": "python",
+    "patterns": [
+      "No such file or directory:",
+      "FileNotFoundError: [Errno 2]"
+    ],
+    "category": "File",
+    "severity": "High",
+    "explanation": "Python looked for a file or folder and could not find it at the path you wrote.",
+    "suggestion": "1) Check the spelling of the file name. 2) Make sure the file really exists. 3) Run the program from the right folder, or use the full path (example: /home/user/data.csv).",
+    "tags": [
+      "file",
+      "not found",
+      "path",
+      "FileNotFoundError"
+    ]
+  },
+  {
+    "id": "py_permission_denied",
+    "language": "python",
+    "patterns": [
+      "Permission denied",
+      "PermissionError"
+    ],
+    "category": "File",
+    "severity": "High",
+    "explanation": "Python tried to open or change a file but your user account does not have permission to do that.",
+    "suggestion": "Check the file permissions. You may need to run as administrator, change the file's permissions, or choose a different folder you are allowed to write to.",
+    "tags": [
+      "permission",
+      "denied",
+      "file"
+    ]
+  },
+  {
+    "id": "py_is_a_directory",
+    "language": "python",
+    "patterns": [
+      "Is a directory",
+      "IsADirectoryError"
+    ],
+    "category": "File",
+    "severity": "High",
+    "explanation": "You treated a folder as if it were a file (for example trying to open a directory with open()).",
+    "suggestion": "Use a file path that points to an actual file, not a folder. If you need to work with the folder contents, use os.listdir() or pathlib instead.",
+    "tags": [
+      "directory",
+      "folder",
+      "file"
+    ]
+  },
+  {
+    "id": "py_not_a_directory",
+    "language": "python",
+    "patterns": [
+      "Not a directory",
+      "NotADirectoryError"
+    ],
+    "category": "File",
+    "severity": "High",
+    "explanation": "You treated a regular file as if it were a folder (for example trying to list its contents like a directory).",
+    "suggestion": "Make sure the path points to a real folder, not a file. Check the path with os.path.isdir() if needed.",
+    "tags": [
+      "directory",
+      "folder",
+      "file"
+    ]
+  },
+  {
+    "id": "py_file_exists",
+    "language": "python",
+    "patterns": [
+      "File exists",
+      "FileExistsError"
+    ],
+    "category": "File",
+    "severity": "Medium",
+    "explanation": "You tried to create a file or folder that already exists, and the operation does not allow overwriting.",
+    "suggestion": "Choose a different name, delete the existing file first, or use a mode that allows overwriting (for example open(..., 'w')).",
+    "tags": [
+      "file",
+      "exists",
+      "create"
+    ]
+  },
+  {
+    "id": "py_module_not_found",
+    "language": "python",
+    "patterns": [
+      "No module named '",
+      "ModuleNotFoundError: No module named"
+    ],
+    "category": "Import",
+    "severity": "High",
+    "explanation": "Python cannot find the library (module) you tried to import. It is missing or the name is spelled wrong.",
+    "suggestion": "Install it with pip. Example: pip install requests. Then check the spelling of the import line (import requests).",
+    "tags": [
+      "import",
+      "module",
+      "pip",
+      "ModuleNotFoundError"
+    ]
+  },
+  {
+    "id": "py_cannot_import_name",
+    "language": "python",
+    "patterns": [
+      "cannot import name '"
+    ],
+    "category": "Import",
+    "severity": "High",
+    "explanation": "The module itself was found, but the specific name you asked for inside it does not exist (or is spelled wrong).",
+    "suggestion": "Check the exact spelling of the name after 'import'. Look at the module docs or source to see the real names it provides.",
+    "tags": [
+      "import",
+      "name",
+      "from"
+    ]
+  },
+  {
+    "id": "py_unbound_local",
+    "language": "python",
+    "patterns": [
+      "cannot access local variable",
+      "UnboundLocalError"
+    ],
+    "category": "Name",
+    "severity": "High",
+    "explanation": "You used a variable inside a function before giving it a value in that function. Python treats it as a local variable because you assign to it somewhere in the function.",
+    "suggestion": "Make sure every local variable is assigned a value before you read it. If you meant to use a global variable, add a global statement, or pass the value in as an argument.",
+    "tags": [
+      "local",
+      "variable",
+      "UnboundLocalError"
+    ]
+  },
+  {
+    "id": "py_recursion_depth",
+    "language": "python",
+    "patterns": [
+      "maximum recursion depth exceeded",
+      "RecursionError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "A function kept calling itself (or a chain of functions kept calling each other) so many times that Python stopped it to prevent a crash.",
+    "suggestion": "Check that your recursive function has a clear stopping condition (base case) that is eventually reached. Make sure the problem gets smaller on each call.",
+    "tags": [
+      "recursion",
+      "depth",
+      "RecursionError"
+    ]
+  },
+  {
+    "id": "py_runtime_generator_stop",
+    "language": "python",
+    "patterns": [
+      "generator raised StopIteration"
+    ],
+    "category": "Runtime",
+    "severity": "Medium",
+    "explanation": "A generator finished by raising StopIteration, and that exception was not handled the way modern Python expects.",
+    "suggestion": "Use a for loop to consume the generator, or catch StopIteration yourself. Avoid raising StopIteration directly inside a generator in new code.",
+    "tags": [
+      "generator",
+      "StopIteration",
+      "RuntimeError"
+    ]
+  },
+  {
+    "id": "py_stop_iteration",
+    "language": "python",
+    "patterns": [
+      "StopIteration"
+    ],
+    "category": "Runtime",
+    "severity": "Medium",
+    "explanation": "You asked an iterator (like next()) for the next item after it had already finished. There are no more items.",
+    "suggestion": "Use a for loop when possible, or catch StopIteration, or check that the iterator still has items before calling next().",
+    "tags": [
+      "iterator",
+      "StopIteration",
+      "next"
+    ]
+  },
+  {
+    "id": "py_overflow_error",
+    "language": "python",
+    "patterns": [
+      "int too large to convert to float",
+      "OverflowError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "A number became so large that Python could not convert or handle it in the way you asked (for example turning a huge integer into a float).",
+    "suggestion": "Use smaller numbers, or keep the value as an integer if possible. Check for calculations that grow without limit.",
+    "tags": [
+      "overflow",
+      "number",
+      "float"
+    ]
+  },
+  {
+    "id": "py_assertion_error",
+    "language": "python",
+    "patterns": [
+      "AssertionError"
+    ],
+    "category": "Runtime",
+    "severity": "Medium",
+    "explanation": "An assert statement failed. The condition you wrote after assert was False.",
+    "suggestion": "Look at the assert line and figure out why the condition is not true. Fix the logic or the data that made the assertion fail.",
+    "tags": [
+      "assert",
+      "AssertionError"
+    ]
+  },
+  {
+    "id": "py_unicode_decode_error",
+    "language": "python",
+    "patterns": [
+      "codec can't decode byte",
+      "UnicodeDecodeError"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "Python tried to read text using one encoding (usually utf-8) but the file contains bytes that do not match that encoding.",
+    "suggestion": "Open the file with the correct encoding, for example open(..., encoding='latin-1') or encoding='utf-8'. You can also try encoding='utf-8-sig' or errors='ignore' while debugging.",
+    "tags": [
+      "unicode",
+      "decode",
+      "encoding",
+      "file"
+    ]
+  },
+  {
+    "id": "py_unicode_encode_error",
+    "language": "python",
+    "patterns": [
+      "codec can't encode",
+      "UnicodeEncodeError"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "Python tried to write text using an encoding that cannot represent some of the characters (for example trying to save emoji with ascii).",
+    "suggestion": "Use a wider encoding such as utf-8 when writing the file: open(..., encoding='utf-8'). Avoid ascii for text that may contain non-English characters.",
+    "tags": [
+      "unicode",
+      "encode",
+      "encoding",
+      "file"
+    ]
+  },
+  {
+    "id": "py_json_decode_error",
+    "language": "python",
+    "patterns": [
+      "JSONDecodeError",
+      "Expecting ',' delimiter",
+      "Expecting property name enclosed in double quotes",
+      "Expecting value",
+      "Extra data"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "Python tried to read JSON text but the text is not valid JSON (missing commas, wrong quotes, extra data, or empty).",
+    "suggestion": "Check the JSON text carefully. Use double quotes for keys and strings, remove trailing commas, and make sure brackets match. You can test the text at jsonlint.com.",
+    "tags": [
+      "json",
+      "decode",
+      "parse"
+    ]
+  },
+  {
+    "id": "py_sqlite_no_such_table",
+    "language": "python",
+    "patterns": [
+      "no such table"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You ran an SQL query that refers to a table that does not exist in the database.",
+    "suggestion": "Check the table name spelling. Make sure you have created the table (CREATE TABLE) before querying it, and that you are connected to the correct database file.",
+    "tags": [
+      "sqlite",
+      "table",
+      "sql"
+    ]
+  },
+  {
+    "id": "py_sqlite_no_such_column",
+    "language": "python",
+    "patterns": [
+      "no such column"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You ran an SQL query that refers to a column that does not exist in the table.",
+    "suggestion": "Check the column name spelling and that it really exists in that table. Use PRAGMA table_info(table_name) to see the real columns.",
+    "tags": [
+      "sqlite",
+      "column",
+      "sql"
+    ]
+  },
+  {
+    "id": "py_sqlite_integrity_error",
+    "language": "python",
+    "patterns": [
+      "UNIQUE constraint failed",
+      "NOT NULL constraint failed",
+      "IntegrityError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "The database rejected your change because it would break a rule (for example inserting a duplicate unique value or a NULL into a required column).",
+    "suggestion": "Check the data you are inserting. Make sure unique fields are not duplicated and that required (NOT NULL) fields always have a value.",
+    "tags": [
+      "sqlite",
+      "integrity",
+      "constraint",
+      "unique"
+    ]
+  },
+  {
+    "id": "py_re_error",
+    "language": "python",
+    "patterns": [
+      "re.error:",
+      "unmatched parentheses",
+      "multiple repeat"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "Your regular expression pattern is invalid (for example unmatched parentheses or a bad quantifier).",
+    "suggestion": "Check the regex pattern carefully. Make sure every ( has a matching ), and that special characters are escaped with \\ when you mean them literally.",
+    "tags": [
+      "regex",
+      "re",
+      "pattern"
+    ]
+  },
+  {
+    "id": "py_requests_http_error",
+    "language": "python",
+    "patterns": [
+      "HTTPError",
+      "Client Error",
+      "404 Client Error"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "The web server returned an error status code (such as 404 Not Found) for your HTTP request.",
+    "suggestion": "Check the URL spelling and that the resource exists. Look at response.status_code and response.text for more details from the server.",
+    "tags": [
+      "requests",
+      "http",
+      "404",
+      "status"
+    ]
+  },
+  {
+    "id": "py_requests_connection_error",
+    "language": "python",
+    "patterns": [
+      "ConnectionError",
+      "requests.exceptions.ConnectionError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "Python could not connect to the server (network problem, wrong host, or the server is down).",
+    "suggestion": "Check your internet connection, the URL host name, and that the server is running. Try the URL in a browser to confirm it is reachable.",
+    "tags": [
+      "requests",
+      "connection",
+      "network"
+    ]
+  },
+  {
+    "id": "py_requests_timeout",
+    "language": "python",
+    "patterns": [
+      "requests.exceptions.Timeout",
+      "Read timed out",
+      "ConnectTimeout"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "The HTTP request took too long and was cancelled because it exceeded the timeout limit.",
+    "suggestion": "Increase the timeout value if the server is slow, or check whether the server is reachable and responding. Handle the timeout so your program does not crash.",
+    "tags": [
+      "requests",
+      "timeout",
+      "network"
+    ]
+  },
+  {
+    "id": "py_unpack_none",
+    "language": "python",
+    "patterns": [
+      "cannot unpack non-iterable NoneType object"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to unpack (split) a value into several variables, but the value is None. None cannot be unpacked.",
+    "suggestion": "Make sure the value is a list or tuple before unpacking. Example: a, b = my_list  only works if my_list is not None.",
+    "tags": [
+      "unpack",
+      "None",
+      "NoneType"
+    ]
+  },
+  {
+    "id": "py_method_not_subscriptable",
+    "language": "python",
+    "patterns": [
+      "'method' object is not subscriptable",
+      "'function' object is not subscriptable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used square brackets [] on a method or function. Methods and functions are not lists or dictionaries, so you cannot pick items from them with [].",
+    "suggestion": "Call the method or function with parentheses first, for example result = my_obj.method(). Then use [] on the result if needed.",
+    "tags": [
+      "method",
+      "function",
+      "subscriptable",
+      "brackets"
+    ]
+  },
+  {
+    "id": "py_unhashable_type",
+    "language": "python",
+    "patterns": [
+      "unhashable type: 'list'",
+      "unhashable type: 'dict'",
+      "unhashable type: 'set'"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to use a list, dictionary, or set as a key in another dictionary (or put it inside a set). Only simple unchanging values like numbers and strings can be used as keys.",
+    "suggestion": "Convert the list to a tuple first (tuples can be keys): my_dict[tuple(my_list)] = value. Or use a string or number as the key instead.",
+    "tags": [
+      "unhashable",
+      "list",
+      "dict",
+      "set",
+      "key"
+    ]
+  },
+  {
+    "id": "py_compare_str_int",
+    "language": "python",
+    "patterns": [
+      "'<' not supported between instances of 'str' and 'int'",
+      "'>' not supported between instances of 'str' and 'int'",
+      "'<=' not supported between instances of 'str' and 'int'",
+      "'>=' not supported between instances of 'str' and 'int'"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to compare text (a string) with a number using < or >. Python cannot decide which is larger when the types are different.",
+    "suggestion": "Make both sides the same type. Convert the string to a number with int() or float(), or convert the number to text with str().",
+    "tags": [
+      "compare",
+      "str",
+      "int",
+      "less",
+      "greater"
+    ]
+  },
+  {
+    "id": "py_unary_minus_str",
+    "language": "python",
+    "patterns": [
+      "bad operand type for unary -: 'str'"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You put a minus sign in front of a string (text). The minus sign only works with numbers.",
+    "suggestion": "If the text holds a number, convert it first: -int(my_string) or -float(my_string). Otherwise remove the minus sign.",
+    "tags": [
+      "unary",
+      "minus",
+      "str",
+      "negative"
+    ]
+  },
+  {
+    "id": "py_in_requires_string",
+    "language": "python",
+    "patterns": [
+      "'in ' requires string as left operand, not int"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used the word 'in' with a number on the left side. When checking if text contains something, the left side must be a string.",
+    "suggestion": "Put a string on the left of 'in'. Example: if 'a' in my_string:  not  if 5 in my_string: (unless my_string is a list of numbers).",
+    "tags": [
+      "in",
+      "string",
+      "operand"
+    ]
+  },
+  {
+    "id": "py_arg_int_not_iterable",
+    "language": "python",
+    "patterns": [
+      "argument of type 'int' is not iterable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used a whole number where Python expected something you can loop over or search inside (like a list or string).",
+    "suggestion": "Pass a list, string, or other collection instead of a plain number. Check the value you are giving to the function or to the 'in' operator.",
+    "tags": [
+      "iterable",
+      "int",
+      "argument",
+      "in"
+    ]
+  },
+  {
+    "id": "py_arg_none_not_iterable",
+    "language": "python",
+    "patterns": [
+      "argument of type 'NoneType' is not iterable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used None where Python expected something you can loop over or search inside. None is empty.",
+    "suggestion": "Make sure the value is a list or string before using it with 'in' or a loop. A function may have returned None.",
+    "tags": [
+      "iterable",
+      "None",
+      "NoneType",
+      "argument"
+    ]
+  },
+  {
+    "id": "py_key_error_int",
+    "language": "python",
+    "patterns": [
+      "KeyError: 0",
+      "KeyError: 1",
+      "KeyError: \\d+"
+    ],
+    "category": "Key",
+    "severity": "High",
+    "explanation": "You asked a dictionary for a number key that does not exist. Dictionaries only return values for keys that were actually stored.",
+    "suggestion": "Check that the number key really exists. Use my_dict.get(0) if you want None instead of an error, or write if 0 in my_dict: first.",
+    "tags": [
+      "key",
+      "dictionary",
+      "KeyError",
+      "int"
+    ]
+  },
+  {
+    "id": "py_generic_not_subscriptable",
+    "language": "python",
+    "patterns": [
+      "object is not subscriptable"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used square brackets [] on a value that does not support them. Only lists, strings, tuples, and dictionaries allow picking items with [].",
+    "suggestion": "Check the type of the variable with type(my_var). Only use [] on lists, strings, tuples, or dictionaries.",
+    "tags": [
+      "subscriptable",
+      "brackets",
+      "index"
+    ]
+  },
+  {
+    "id": "py_empty_separator",
+    "language": "python",
+    "patterns": [
+      "empty separator"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You called a string method like split() with an empty separator (''). Python does not allow an empty separator.",
+    "suggestion": "Pass a real separator such as a space or comma: my_string.split(' ') or my_string.split(','). If you want every character, use list(my_string) instead.",
+    "tags": [
+      "split",
+      "separator",
+      "empty",
+      "string"
+    ]
+  },
+  {
+    "id": "py_io_closed_file",
+    "language": "python",
+    "patterns": [
+      "I/O operation on closed file"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You tried to read or write a file after it was already closed.",
+    "suggestion": "Do all reading and writing before you close the file. Best practice: use a with open(...) as f: block so the file closes automatically when you finish.",
+    "tags": [
+      "file",
+      "closed",
+      "io",
+      "open"
+    ]
+  },
+  {
+    "id": "py_memory_error",
+    "language": "python",
+    "patterns": [
+      "MemoryError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "Your program tried to use more memory than the computer can give. This often happens with very large lists or endless loops that keep adding data.",
+    "suggestion": "Process data in smaller pieces instead of loading everything at once. Check for loops that grow a list without limit.",
+    "tags": [
+      "memory",
+      "MemoryError"
+    ]
+  },
+  {
+    "id": "py_indentation_expected_block",
+    "language": "python",
+    "patterns": [
+      "expected an indented block"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "Python expected the next line to be indented (moved to the right) because of a colon (:) on the line above, but the indent is missing.",
+    "suggestion": "Add 4 spaces (or one Tab) at the start of the line after if, for, def, class, etc. Example:\nif x > 0:\n    print(x)",
+    "tags": [
+      "indent",
+      "IndentationError",
+      "block"
+    ]
+  },
+  {
+    "id": "py_indentation_unexpected",
+    "language": "python",
+    "patterns": [
+      "unexpected indent"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "A line is indented further than Python expected. Extra spaces or a Tab at the start of the line caused this.",
+    "suggestion": "Remove the extra spaces or Tab at the beginning of the line so it lines up with the code around it.",
+    "tags": [
+      "indent",
+      "IndentationError"
+    ]
+  },
+  {
+    "id": "py_indentation_unindent_mismatch",
+    "language": "python",
+    "patterns": [
+      "unindent does not match any outer indentation level"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "The spaces (or Tabs) used to go back to a previous level do not match any earlier indent. Mixing Tabs and spaces often causes this.",
+    "suggestion": "Use only spaces (4 spaces per level) for the whole file. Most editors have a setting to convert Tabs to spaces. Make sure the line lines up with an earlier block.",
+    "tags": [
+      "indent",
+      "IndentationError",
+      "tabs",
+      "spaces"
+    ]
+  },
+  {
+    "id": "py_tab_error",
+    "language": "python",
+    "patterns": [
+      "inconsistent use of tabs and spaces in indentation",
+      "TabError"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "Some lines are indented with Tabs and others with spaces. Python does not allow mixing them.",
+    "suggestion": "Pick one style and use it everywhere. The usual choice is 4 spaces. In your editor, turn on 'convert tabs to spaces' and re-indent the file.",
+    "tags": [
+      "tab",
+      "spaces",
+      "indent",
+      "TabError"
+    ]
+  },
+  {
+    "id": "py_syntax_invalid",
+    "language": "python",
+    "patterns": [
+      "SyntaxError: invalid syntax"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "Python found text that does not follow the language rules (a missing colon, a wrong symbol, or a typo).",
+    "suggestion": "Look at the line shown in the error. Check for missing colons (:), unmatched brackets, or misspelled keywords. Fix the line and try again.",
+    "tags": [
+      "syntax",
+      "SyntaxError"
+    ]
+  },
+  {
+    "id": "py_syntax_eof",
+    "language": "python",
+    "patterns": [
+      "unexpected EOF while parsing"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "Python reached the end of the file while still expecting more code (often a missing closing parenthesis, bracket, or quote).",
+    "suggestion": "Check that every (, [, { and quote has a matching closing partner. Count them carefully on the lines above the error.",
+    "tags": [
+      "syntax",
+      "EOF",
+      "SyntaxError",
+      "bracket"
+    ]
+  },
+  {
+    "id": "py_syntax_invalid_character",
+    "language": "python",
+    "patterns": [
+      "invalid character"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "The code contains a character that Python does not understand in that place (sometimes a fancy quote or symbol copied from a website).",
+    "suggestion": "Replace any special quotes (“ ”) with normal ones (\" \"). Remove or replace any odd symbols that do not belong in Python code.",
+    "tags": [
+      "syntax",
+      "character",
+      "SyntaxError"
+    ]
+  },
+  {
+    "id": "py_syntax_print_parentheses",
+    "language": "python",
+    "patterns": [
+      "Missing parentheses in call to 'print'"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "In Python 3, print is a function and needs parentheses. Writing print \"hello\" is the old Python 2 style and no longer works.",
+    "suggestion": "Add parentheses: print(\"hello\") instead of print \"hello\".",
+    "tags": [
+      "print",
+      "parentheses",
+      "SyntaxError",
+      "python3"
+    ]
+  },
+  {
+    "id": "py_keyboard_interrupt",
+    "language": "python",
+    "patterns": [
+      "KeyboardInterrupt"
+    ],
+    "category": "Runtime",
+    "severity": "Low",
+    "explanation": "The program was stopped by you (usually by pressing Ctrl+C).",
+    "suggestion": "This is not a bug. If you did not mean to stop the program, just run it again. To handle Ctrl+C gracefully you can use a try/except KeyboardInterrupt block.",
+    "tags": [
+      "KeyboardInterrupt",
+      "ctrl-c",
+      "interrupt"
+    ]
+  },
+  {
+    "id": "py_generator_exit",
+    "language": "python",
+    "patterns": [
+      "GeneratorExit"
+    ],
+    "category": "Runtime",
+    "severity": "Low",
+    "explanation": "A generator was closed before it finished. This is normal when the program no longer needs more values from it.",
+    "suggestion": "Usually you can ignore this. If you see it unexpectedly, check that you are not closing or deleting a generator while it is still being used.",
+    "tags": [
+      "generator",
+      "GeneratorExit"
+    ]
+  },
+  {
+    "id": "py_concat_str_int_old",
+    "language": "python",
+    "patterns": [
+      "cannot concatenate 'str' and 'int' objects"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to join text (a string) with a number using +. Python cannot mix text and numbers this way.",
+    "suggestion": "Convert the number to text first: \"score: \" + str(10). Or use an f-string: f\"score: {10}\".",
+    "tags": [
+      "concatenate",
+      "str",
+      "int",
+      "plus"
+    ]
+  },
+  {
+    "id": "py_multiply_sequence_non_int",
+    "language": "python",
+    "patterns": [
+      "can't multiply sequence by non-int of type 'float'",
+      "can't multiply sequence by non-int of type 'str'",
+      "can't multiply sequence by non-int of type"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You tried to multiply a list or string by something that is not a whole number. Python only allows multiplying a sequence by an integer (to repeat it).",
+    "suggestion": "Use a whole number on the right side, for example my_list * 3. If you meant math on numbers, make sure both sides are numbers, not a list or string.",
+    "tags": [
+      "multiply",
+      "sequence",
+      "list",
+      "string"
+    ]
+  },
+  {
+    "id": "py_cannot_interpret_as_integer",
+    "language": "python",
+    "patterns": [
+      "'float' object cannot be interpreted as an integer",
+      "'str' object cannot be interpreted as an integer",
+      "cannot be interpreted as an integer"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A function needed a whole number (integer) but you gave it a decimal or some text instead.",
+    "suggestion": "Pass a whole number. If you have a decimal, convert it with int(my_float). If you have text that looks like a number, use int(my_string).",
+    "tags": [
+      "integer",
+      "float",
+      "str",
+      "interpret"
+    ]
+  },
+  {
+    "id": "py_order_must_be_str",
+    "language": "python",
+    "patterns": [
+      "order must be str, not int"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A function expected the word for sort order (like 'ascending') as text, but you gave a number instead.",
+    "suggestion": "Pass a string such as \"asc\" or \"desc\", not a number. Check the function documentation for the exact values it accepts.",
+    "tags": [
+      "order",
+      "str",
+      "sort"
+    ]
+  },
+  {
+    "id": "py_expected_character_buffer",
+    "language": "python",
+    "patterns": [
+      "expected a character buffer object"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "A function expected text (a string or bytes) but received something else.",
+    "suggestion": "Pass a string or bytes object. Convert other values with str() or bytes() if needed.",
+    "tags": [
+      "buffer",
+      "string",
+      "bytes"
+    ]
+  },
+  {
+    "id": "py_descriptor_requires_object",
+    "language": "python",
+    "patterns": [
+      "descriptor '.*' requires a '.*' object but received a"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You used a method in a special way that expects an instance of a class, but you gave it a different kind of object (or used it on the class itself).",
+    "suggestion": "Call the method on an instance of the correct class, for example my_obj.method(), not on the class or on the wrong type.",
+    "tags": [
+      "descriptor",
+      "method",
+      "instance"
+    ]
+  },
+  {
+    "id": "py_unbound_method",
+    "language": "python",
+    "patterns": [
+      "unbound method",
+      "must be called with .* instance as first argument"
+    ],
+    "category": "Type",
+    "severity": "High",
+    "explanation": "You called a method without an instance of the class. In older Python this is called an unbound method error.",
+    "suggestion": "Create an object first, then call the method on it: obj = MyClass(); obj.method(). Or use MyClass.method(obj) if you must call it on the class.",
+    "tags": [
+      "unbound",
+      "method",
+      "instance",
+      "class"
+    ]
+  },
+  {
+    "id": "py_key_error_special",
+    "language": "python",
+    "patterns": [
+      "KeyError: None",
+      "KeyError: False",
+      "KeyError: True"
+    ],
+    "category": "Key",
+    "severity": "High",
+    "explanation": "You asked a dictionary for the key None, False, or True, but that key is not in the dictionary.",
+    "suggestion": "Check whether you really meant to use None/True/False as a key. Use my_dict.get(None) if you want None instead of an error when the key is missing.",
+    "tags": [
+      "key",
+      "None",
+      "True",
+      "False",
+      "dictionary"
+    ]
+  },
+  {
+    "id": "py_max_min_empty",
+    "language": "python",
+    "patterns": [
+      "max() arg is an empty sequence",
+      "min() arg is an empty sequence"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You called max() or min() on an empty list (or other empty collection). There is no largest or smallest value when there are no items.",
+    "suggestion": "Check that the list is not empty before calling max() or min(). Example: if my_list: biggest = max(my_list)",
+    "tags": [
+      "max",
+      "min",
+      "empty",
+      "sequence"
+    ]
+  },
+  {
+    "id": "py_format_zero_length_field",
+    "language": "python",
+    "patterns": [
+      "zero length field name in format"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "In an f-string or .format() call you left an empty set of braces {}. Python needs a name or value inside the braces.",
+    "suggestion": "Put a variable or expression inside the braces. Example: f\"Hello {name}\" instead of f\"Hello {}\".",
+    "tags": [
+      "format",
+      "f-string",
+      "braces"
+    ]
+  },
+  {
+    "id": "py_format_unknown_code",
+    "language": "python",
+    "patterns": [
+      "Unknown format code",
+      "Invalid format specifier"
+    ],
+    "category": "Value",
+    "severity": "High",
+    "explanation": "You used a format code (the part after : inside braces) that does not work with that kind of value. For example using a number format on text.",
+    "suggestion": "Check the format specifier. Common ones: :.2f for 2 decimal places on a number, :s for strings. Make sure the value type matches the code you chose.",
+    "tags": [
+      "format",
+      "specifier",
+      "f-string"
+    ]
+  },
+  {
+    "id": "py_dll_load_failed",
+    "language": "python",
+    "patterns": [
+      "DLL load failed",
+      "ImportError: DLL load failed"
+    ],
+    "category": "Import",
+    "severity": "High",
+    "explanation": "Python found the module but could not load a required system library (DLL) that the module needs. This is common on Windows with packages that use C extensions.",
+    "suggestion": "Reinstall the package (pip uninstall package_name then pip install package_name). Make sure you have the correct Visual C++ redistributable installed if the error mentions it. Try installing a binary wheel that matches your Python version.",
+    "tags": [
+      "import",
+      "DLL",
+      "windows",
+      "binary"
+    ]
+  },
+  {
+    "id": "py_syntax_eol_string",
+    "language": "python",
+    "patterns": [
+      "EOL while scanning string literal"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "A string was started with a quote but never closed before the end of the line. Python reached the end of the line while still inside the string.",
+    "suggestion": "Add the missing closing quote on the same line, or use triple quotes for a multi-line string: \"\"\"text\"\"\".",
+    "tags": [
+      "syntax",
+      "string",
+      "quote",
+      "EOL"
+    ]
+  },
+  {
+    "id": "py_syntax_line_continuation",
+    "language": "python",
+    "patterns": [
+      "unexpected character after line continuation character"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "You used a backslash (\\) to continue a line, but something other than a newline came right after it.",
+    "suggestion": "Put the backslash at the very end of the line with nothing after it (not even a space). Or wrap the expression in parentheses so you do not need the backslash.",
+    "tags": [
+      "syntax",
+      "continuation",
+      "backslash"
+    ]
+  },
+  {
+    "id": "py_syntax_unmatched_bracket",
+    "language": "python",
+    "patterns": [
+      "unmatched ')'",
+      "unmatched ']'",
+      "unmatched '}'",
+      "missing ), unterminated subpattern",
+      "unterminated subpattern"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "A parenthesis, square bracket, or curly brace was opened but never closed, or an extra closing one was found.",
+    "suggestion": "Count the (, [, { and their closing partners. Make sure every opener has a matching closer in the right order.",
+    "tags": [
+      "syntax",
+      "bracket",
+      "parenthesis",
+      "unmatched"
+    ]
+  },
+  {
+    "id": "py_syntax_non_printable",
+    "language": "python",
+    "patterns": [
+      "invalid non-printable character"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "The code contains a hidden or special character that Python cannot use in that place (sometimes copied from a website or document).",
+    "suggestion": "Delete the strange character and type it again by hand. Watch for invisible characters or unusual quotes.",
+    "tags": [
+      "syntax",
+      "character",
+      "non-printable"
+    ]
+  },
+  {
+    "id": "py_syntax_positional_after_keyword",
+    "language": "python",
+    "patterns": [
+      "positional argument follows keyword argument"
+    ],
+    "category": "Other",
+    "severity": "High",
+    "explanation": "In a function call you put a normal value after a named argument (like name=...). Once you use a name=, every argument after it must also use a name.",
+    "suggestion": "Either put all positional values first, or give every argument a name. Example: func(1, 2, c=3) is OK; func(a=1, 2) is not.",
+    "tags": [
+      "syntax",
+      "argument",
+      "keyword",
+      "positional"
+    ]
+  },
+  {
+    "id": "py_floating_point_error",
+    "language": "python",
+    "patterns": [
+      "FloatingPointError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "A floating-point math operation failed (for example an invalid calculation with decimal numbers).",
+    "suggestion": "Check the numbers you are using in the calculation. Avoid dividing by very small values or performing operations that produce infinity or undefined results.",
+    "tags": [
+      "float",
+      "math",
+      "FloatingPointError"
+    ]
+  },
+  {
+    "id": "py_awaited_coroutine_reuse",
+    "language": "python",
+    "patterns": [
+      "cannot reuse already awaited coroutine"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You tried to await the same coroutine object more than once. After a coroutine has been awaited, it cannot be awaited again.",
+    "suggestion": "Create a new coroutine each time you need to run the async function. Call the async function again instead of reusing the old coroutine object.",
+    "tags": [
+      "async",
+      "await",
+      "coroutine"
+    ]
+  },
+  {
+    "id": "py_event_loop_error",
+    "language": "python",
+    "patterns": [
+      "no running event loop",
+      "This event loop is already running"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "Async code needs an event loop. Either none is running, or you tried to start one while another is already running.",
+    "suggestion": "Use asyncio.run(main()) to start your async program. Avoid calling loop.run_until_complete() from inside a running loop; use await instead.",
+    "tags": [
+      "async",
+      "event loop",
+      "asyncio"
+    ]
+  },
+  {
+    "id": "py_system_exit",
+    "language": "python",
+    "patterns": [
+      "SystemExit"
+    ],
+    "category": "Runtime",
+    "severity": "Low",
+    "explanation": "The program called sys.exit() or raised SystemExit to stop on purpose.",
+    "suggestion": "This is usually intentional. If you did not mean to exit, look for sys.exit() or raise SystemExit in your code and remove or guard it.",
+    "tags": [
+      "SystemExit",
+      "exit"
+    ]
+  },
+  {
+    "id": "py_buffer_error",
+    "language": "python",
+    "patterns": [
+      "BufferError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "An operation on a memory buffer failed (for example resizing a buffer that is still being used elsewhere).",
+    "suggestion": "Make sure no other part of the code is still using the buffer when you try to change or free it.",
+    "tags": [
+      "buffer",
+      "BufferError",
+      "memory"
+    ]
+  },
+  {
+    "id": "py_reference_error",
+    "language": "python",
+    "patterns": [
+      "weakly-referenced object no longer exists",
+      "ReferenceError"
+    ],
+    "category": "Runtime",
+    "severity": "High",
+    "explanation": "You tried to use an object through a weak reference, but the real object has already been deleted.",
+    "suggestion": "Keep a normal reference to the object if you still need it. Weak references do not stop the object from being cleaned up.",
+    "tags": [
+      "reference",
+      "weakref",
+      "ReferenceError"
+    ]
+  }
+]
